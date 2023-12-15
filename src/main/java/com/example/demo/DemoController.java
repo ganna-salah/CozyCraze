@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 @Controller
 public class DemoController {
 
@@ -12,13 +13,13 @@ public class DemoController {
     
     public String showForm(Model model) {
         model.addAttribute("formObject", new YourFormObject());
-        return "trial"; // Assuming Thymeleaf template name is "trail.html"
+        return "trial";
     }
 
     @PostMapping("/submitForm")
     public String submitForm(YourFormObject yourFormObject) {
-        System.out.println(yourFormObject.getFieldName());
-        System.out.println(yourFormObject.getAge());
+       // registerUser("sandra","sandrabassem2002@gmail.com","01200559178","sandra_bassem","123456sandra");
+
         return "home";
     }
 
@@ -44,3 +45,6 @@ public class DemoController {
         }
     }
 }
+
+
+
