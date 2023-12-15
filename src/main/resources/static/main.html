@@ -188,21 +188,20 @@
           <button id="search-button">Search</button>
         </div>
 
-        <div style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content;">
+        <div  style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content;">
           <img id="drag1" src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;"
             ondragstart="drag(event)">
           <img id="drag2" src="stickers/images-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img src="stickers/s1-PhotoRoom.png-PhotoRoom.png" style="width: 80px;">
-          <img src="stickers/itachi-PhotoRoom.png-PhotoRoom.png" style="width: 80px;">
-          <img src="stickers/s2-PhotoRoom (2).png" style="width: 80px;">
-          <img src="stickers/s2-PhotoRoom.png-PhotoRoom.png" style="width: 80px;">
-          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
-          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
-          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
-          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
-          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
-          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
+          <img id="drag3" src="stickers/s1-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag4" src="stickers/itachi-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag5" src="stickers/formula1-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag6" src="stickers/formula2-PhotoRoom.png-PhotoRoom.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag7" src="stickers/formula3-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag8" src="stickers/naruto-PhotoRoom.png-PhotoRoom.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag9" src="stickers/whale2-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag10" src="stickers/whaleOrca-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag11" src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;"ondragstart="drag(event)">
         </div>
 
 
@@ -541,19 +540,7 @@
       }
     </script>
 
-    <script>
-      console.log("Parent Element:", parrr.id);
-
-      l = document.getElementById("drag1");
-      dr = new Draggabilly(l, {
-        containment: "#div3",
-      });
-      l = document.getElementById("drag2");
-      dr = new Draggabilly(l, {
-        containment: "#div3",
-      });
-    </script>
-
+   
 </body>
 
 </html>
