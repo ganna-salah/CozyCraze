@@ -1,0 +1,87 @@
+<!-- working function -->
+<html>
+  <head>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/draggabilly/2.3.0/draggabilly.pkgd.min.js"
+      integrity="sha512-wrqGZ9AlrZss+bvssqlLBHyZISI7FVl0JoBDZ4frb4Udgj1IDcip4ausWVzf80m52bdDv5sihhtBsjZgraoQhQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <style>
+      #div3 {
+        width: 700px;
+        height: 500px;
+        padding: 10px;
+        border: 1px solid #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <br />
+    <img
+      id="drag1"
+      src="stickers/images-PhotoRoom.png-PhotoRoom (1).png"
+      style="position: absolute"
+      width="336"
+      height="69"
+      ondragstart="drag(event)"
+      style="margin: 300px"
+    />
+    <br />
+    <br />
+    <img
+      id="drag2"
+      src="stickers/s2-PhotoRoom (2).png"
+      style="position: absolute"
+      width="336"
+      height="69"
+      ondragstart="drag(event)"
+    />
+
+    <br />
+
+    <script>
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setDragImage(ev.target, 0, 0); // Set the dragged image
+        ev.dataTransfer.setData("text", ev.target.id); // Set the ID of the dragged element
+      }
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var originalElement = document.getElementById(data);
+
+        // Create a copy of the original element
+        var clonedElement = originalElement.cloneNode(true);
+
+        // Set a new ID for the cloned element (optional)
+        var newId = "drag" + new Date().getTime();
+        clonedElement.id = newId;
+
+        // Append the cloned element to the drop target
+        ev.target.appendChild(clonedElement);
+
+        // Make the cloned element draggable within the div
+        var draggableInstance = new Draggabilly(clonedElement, {
+          containment: "#div3",
+        });
+      }
+    </script>
+
+    <script>
+      console.log("Parent Element:", parrr.id);
+
+      l = document.getElementById("drag1");
+      dr = new Draggabilly(l, {
+        containment: "#div3",
+      });
+      l = document.getElementById("drag2");
+      dr = new Draggabilly(l, {
+        containment: "#div3",
+      });
+    </script>
+  </body>
+</html>

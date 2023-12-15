@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Design</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="proj.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/draggabilly/2.3.0/draggabilly.pkgd.min.js"
+    integrity="sha512-wrqGZ9AlrZss+bvssqlLBHyZISI7FVl0JoBDZ4frb4Udgj1IDcip4ausWVzf80m52bdDv5sihhtBsjZgraoQhQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <style>
+    .w3-sidebar a {
+      font-family: "Roboto", sans-serif;
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .w3-wide {
+      font-family: "Montserrat", sans-serif;
+    }
+    #div3 {
+        width: 500px;
+        height: 400px;
+        padding: 10px;
+        /* border: 1px solid #000000; */
+      }
+  </style>
+</head>
+
+<body class="w3-content" style="max-width: 1200px">
+  <!-- Sidebar/menu -->
+  <nav class="w3-sidebar w3-bar-block w3-white w3-collapse w3-top" style="z-index: 3; width: 350px" id="mySidebar">
+    <!-- div for side bar logo and exit button-->
+    <div class="w3-container w3-display-container w3-padding-16">
+      <i onclick="w3_close()" class="fa fa-remove w3-hide-large w3-button w3-display-topright"></i>
+      <h3 class="w3-wide"><b>Cozy Craze</b></h3>
+      <!-- side bar title -->
+    </div>
+    <div class="w3-padding-64 w3-large w3-text-grey" style="font-weight: bold">
+      <!-- product section-->
+      <a onclick="myAccFunc('productsAcc')" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align"
+        id="myBtn">
+        Products <i class="fa fa-caret-down"></i>
+      </a>
+      <div id="productsAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('pocketed hoddie')">Pocketed Hoodie</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('pocketless hoddie')">Pocketless Hoodie</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('Sweatshirt')">Sweatshirt</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('pocketed sweatshirt')">pocketed sweatshirt</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('jacket')">Jacket</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('sports jacket')">sports jacket</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('shortShirt')">short sleeves shirt</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('longShirt')">long sleeves shirt</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('sweatpants')">Sweatpants</a>
+        <a href="#" class="w3-bar-item w3-button" onclick="decideImage('wideLeg')">Wide leg pants</a>
+
+
+      </div>
+
+      <!-- color section-->
+      <a onclick="myAccFunc('colorAcc')" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align"
+        id="myBtn">
+        Colors <i class="fa fa-caret-down"></i>
+      </a>
+      <div id="colorAcc" class="w3-hide w3-padding-large w3-medium" style="display: inline-block">
+        <a href="#" onclick="decideColor('black')" class="w3-button" style="
+              background-color: black;
+              border-radius: 50%;
+              width: 5px;
+              height: 5px;
+              border-color: black !important ;
+              border: solid;
+            "></a>
+        <a href="#" onclick="decideColor('white')" class="w3-button" style="
+              background-color: white;
+              border-radius: 50%;
+              width: 5px;
+              height: 5px;
+              border-color: black !important ;
+              border: solid;
+            "></a>
+        <a href="#" onclick="decideColor('grey')" class="w3-button" style="
+              background-color: grey;
+              border-radius: 50%;
+              width: 5px;
+              height: 5px;
+              border-color: black !important ;
+              border: solid;
+            "></a>
+        <a href="#" onclick="decideColor('red')" class="w3-button" style="
+              background-color: rgb(189, 43, 69);
+              border-radius: 50%;
+              width: 5px;
+              height: 5px;
+              border-color: black !important ;
+              border: solid;
+            "></a>
+        <a href="#" onclick="decideColor('blue')" class="w3-button" style="
+              background-color: rgb(6, 66, 165);
+              border-radius: 50%;
+              width: 5px;
+              height: 5px !important ;
+              border-color: black !important ;
+              border: solid;
+            "></a>
+        <a href="#" onclick="decideColor('green')" class="w3-button" style="
+              background-color: rgb(0, 113, 114);
+              border-radius: 50%;
+              width: 5px;
+              height: 5px;
+              border-color: black !important ;
+              border: solid;
+            "></a>
+        <a href="#" onclick="decideColor('purple')" class="w3-button" style="
+              background-color: rgb(132, 65, 128);
+              border-radius: 50%;
+              width: 5px;
+              height: 5px;
+              border-color: black !important ;
+              border: solid;
+            "></a>
+        <a href="#" onclick="decideColor('pink')" class="w3-button" style="
+              background-color: rgb(237, 170, 173);
+              border-radius: 50%;
+              width: 5px;
+              height: 5px;
+              border-color: black !important ;
+              border: solid;
+            "></a>
+        <a href="#" onclick="decideColor('pistachio')" class="w3-button" style="
+            background-color: #93C572;
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;
+            border-color: black !important ;
+            border: solid;
+          "></a>
+        <a href="#" onclick="decideColor('Saffron')" class="w3-button" style="
+          background-color: #F4C430;
+          border-radius: 50%;
+          width: 5px;
+          height: 5px;
+          border-color: black !important ;
+          border: solid;
+        "></a>
+        <a href="#" onclick="decideColor('chocolate')" class="w3-button" style="
+        background-color: #7B3F00;
+        border-radius: 50%;
+        width: 5px;
+        height: 5px;
+        border-color: black !important ;
+        border: solid;
+      "></a>
+        <a href="#" onclick="decideColor('beige')" class="w3-button" style="
+        background-color:#f6ecc0;
+        border-radius: 50%;
+        width: 5px;
+        height: 5px;
+        border-color: black !important ;
+        border: solid;
+      "></a>
+
+
+
+
+
+      </div>
+
+      <a onclick="myAccFunc('StickersAcc')" href="javascript:void(0)" class="w3-button w3-block w3-white w3-left-align"
+        id="myBtn">
+        Stickers <i class="fa fa-caret-down"></i>
+      </a>
+      <div id="StickersAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
+
+        <div id="search-container">
+          <input type="text" id="search-input" placeholder="Search..." style="width: 213px;margin-bottom: 10px;">
+          <button id="search-button">Search</button>
+        </div>
+
+        <div style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content;">
+          <img id="drag1" src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;"
+            ondragstart="drag(event)">
+          <img id="drag2" src="stickers/images-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
+            ondragstart="drag(event)">
+          <img src="stickers/s1-PhotoRoom.png-PhotoRoom.png" style="width: 80px;">
+          <img src="stickers/itachi-PhotoRoom.png-PhotoRoom.png" style="width: 80px;">
+          <img src="stickers/s2-PhotoRoom (2).png" style="width: 80px;">
+          <img src="stickers/s2-PhotoRoom.png-PhotoRoom.png" style="width: 80px;">
+          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
+          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
+          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
+          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
+          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
+          <img src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;">
+        </div>
+
+
+
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+          <input type="file" name="imageUpload" id="imageUpload" accept="image/*">
+        </form>
+
+      </div>
+
+      <a href="#footer" class="w3-bar-item w3-button w3-padding">Contact</a>
+      <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding"
+        onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+      <a href="#footer" class="w3-bar-item w3-button w3-padding">Subscribe</a>
+  </nav>
+
+  <!-- Top menu on small screens -->
+  <header class="w3-bar w3-top w3-hide-large w3-black w3-xlarge">
+    <div class="w3-bar-item w3-padding-24 w3-wide">Cozy Craze</div>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-padding-24 w3-right" onclick="w3_open()"><i
+        class="fa fa-bars"></i></a>
+  </header>
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor: pointer" title="close side menu"
+    id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left: 350px">
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top: 83px"></div>
+
+    <!-- Top header -->
+    <header class="w3-container w3-xlarge">
+      <p class="w3-left">Design</p>
+      <p class="w3-right">
+        <i class="fa fa-shopping-cart w3-margin-right"></i>
+        <i class="fa fa-search"></i>
+      </p>
+    </header>
+
+    <!-- design section -->
+    <div id="div"    style="
+          max-height: 400px;
+          display: flex;
+          align-items: center;
+          justify-content: center !important;
+          width: 100%;
+          border: 2px solid !important;
+        ">
+      <!-- only used for the default image whose id would be taken to change img src -->
+      <img  id="design_image" src="products/pocketed hoodie.png"
+        style="
+            position: relative;
+            border-bottom: 2px solid;
+            border-top: 2px solid;
+            background-color: rgb(237, 170, 173);
+            min-width: inherit !important;
+            max-height: inherit !important;
+          " />
+    </div>
+    
+    <div
+    id="div3"
+    ondrop="drop(event)"
+    ondragover="allowDrop(event)"
+    class="w3-display-middle"
+    style="
+      position: absolute; /* or position: relative; depending on your layout */
+      z-index: 2; /* Set a higher value to place it on top */
+      max-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center !important;
+      width: 100%;
+      /* border: 2px solid !important; */
+    "
+  >
+  </div>
+  
+
+    <!-- Subscribe section -->
+    <div class="w3-container w3-black w3-padding-32">
+      <h1>Subscribe</h1>
+      <p>To get special offers and VIP treatment:</p>
+      <p>
+        <input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width: 100%" />
+      </p>
+      <button type="button" class="w3-button w3-red w3-margin-bottom">
+        Subscribe
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
+      <div class="w3-row-padding">
+        <div class="w3-col s4">
+          <h4>Contact</h4>
+          <p>Questions? Go ahead.</p>
+          <form action="/action_page.php" target="_blank">
+            <p>
+              <input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required />
+            </p>
+            <p>
+              <input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required />
+            </p>
+            <p>
+              <input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required />
+            </p>
+            <p>
+              <input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required />
+            </p>
+            <button type="submit" class="w3-button w3-block w3-black">
+              Send
+            </button>
+          </form>
+        </div>
+
+        <div class="w3-col s4">
+          <h4>About</h4>
+          <p><a href="#">About us</a></p>
+          <p><a href="#">We're hiring</a></p>
+          <p><a href="#">Support</a></p>
+          <p><a href="#">Find store</a></p>
+          <p><a href="#">Shipment</a></p>
+          <p><a href="#">Payment</a></p>
+          <p><a href="#">Gift card</a></p>
+          <p><a href="#">Return</a></p>
+          <p><a href="#">Help</a></p>
+        </div>
+
+        <div class="w3-col s4 w3-justify">
+          <h4>Store</h4>
+          <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
+          <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
+          <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
+          <h4>We accept</h4>
+          <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
+          <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
+          <br />
+          <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
+          <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
+          <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
+          <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
+          <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
+          <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+        </div>
+      </div>
+    </footer>
+
+    <div class="w3-black w3-center w3-padding-24">
+      Powered by
+      <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
+        class="w3-hover-opacity">w3.css</a>
+    </div>
+
+    <!-- End page content -->
+  </div>
+
+  <!-- Newsletter Modal -->
+  <div id="newsletter" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom" style="padding: 32px">
+      <div class="w3-container w3-white w3-center">
+        <i onclick="document.getElementById('newsletter').style.display='none'"
+          class="fa fa-remove w3-right w3-button w3-transparent w3-xxlarge"></i>
+        <h2 class="w3-wide">NEWSLETTER</h2>
+        <p>
+          Join our mailing list to receive updates on new arrivals and special
+          offers.
+        </p>
+        <p>
+          <input class="w3-input w3-border" type="text" placeholder="Enter e-mail" />
+        </p>
+        <button type="button" class="w3-button w3-padding-large w3-red w3-margin-bottom"
+          onclick="document.getElementById('newsletter').style.display='none'">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Accordion
+    function myAccFunc(acc) {
+      var x = document.getElementById(acc);
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+
+    // Click on the "Jeans" link on page load to open the accordion for demo purposes
+    document.getElementById("myBtn").click();
+
+    // Open and close sidebar
+    function w3_open() {
+      document.getElementById("mySidebar").style.display = "block";
+      document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function w3_close() {
+      document.getElementById("mySidebar").style.display = "none";
+      document.getElementById("myOverlay").style.display = "none";
+    }
+
+    function decideImage(x) {
+      switch (x) {
+        case "pocketless hoddie":
+          document.getElementById("design_image").src =
+            "products/pocketlessHoodie.png";
+          break;
+        case "pocketed hoddie":
+          document.getElementById("design_image").src =
+            "products/pocketed hoodie.png";
+          break;
+        case "Sweatshirt":
+          document.getElementById("design_image").src =
+            "products/sweatshirt copy.png";
+          break;
+        case "sweatpants":
+          document.getElementById("design_image").src =
+            "products/sweatpants.png";
+          break;
+        case "wideLeg":
+          document.getElementById("design_image").src =
+            "products/wide leg copy.png";
+          break;
+        case "shortShirt":
+          document.getElementById("design_image").src =
+            "products/tshirt copy.png";
+          break;
+        case "longShirt":
+          document.getElementById("design_image").src =
+            "products/long sleeve shirt.png";
+          break;
+        case "jacket":
+          document.getElementById("design_image").src =
+            "products/jacket.png";
+          break;
+
+        case "sports jacket":
+          document.getElementById("design_image").src =
+            "products/sports jacket.png";
+          break;
+
+        case "pocketed sweatshirt":
+          document.getElementById("design_image").src =
+            "products/pocket sweatshirt.png";
+          break;
+      }
+    }
+
+    function decideColor(color) {
+      switch (color) {
+        case "black":
+          document.getElementById("design_image").style.backgroundColor =
+            "black";
+          break;
+        case "pink":
+          document.getElementById("design_image").style.backgroundColor =
+            "rgb(237,170,173)";
+          break;
+        case "white":
+          document.getElementById("design_image").style.backgroundColor =
+            "white";
+          break;
+        case "blue":
+          document.getElementById("design_image").style.backgroundColor =
+            "rgb(6,66,165)";
+          break;
+        case "red":
+          document.getElementById("design_image").style.backgroundColor =
+            "rgb(189,43,69)";
+          break;
+        case "green":
+          document.getElementById("design_image").style.backgroundColor =
+            "rgb(0,113,114)";
+          break;
+        case "purple":
+          document.getElementById("design_image").style.backgroundColor =
+            "rgb(132,65,128)";
+          break;
+        case "grey":
+          document.getElementById("design_image").style.backgroundColor =
+            "rgb(128,128,128)";
+          break;
+        case "pistachio":
+          document.getElementById("design_image").style.backgroundColor =
+            "#93C572";
+          break;
+        case "Saffron":
+          document.getElementById("design_image").style.backgroundColor =
+            "#F4C430";
+          break;
+        case "chocolate":
+          document.getElementById("design_image").style.backgroundColor =
+            "#7B3F00";
+          break;
+        case "beige":
+          document.getElementById("design_image").style.backgroundColor =
+            "#f6ecc0";
+          break;
+      }
+    }
+
+    // drag and drop funtions
+
+    function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setDragImage(ev.target, 0, 0); // Set the dragged image
+        ev.dataTransfer.setData("text", ev.target.id); // Set the ID of the dragged element
+      }
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var originalElement = document.getElementById(data);
+
+        // Create a copy of the original element
+        var clonedElement = originalElement.cloneNode(true);
+
+        // Set a new ID for the cloned element (optional)
+        var newId = "drag" + new Date().getTime();
+        clonedElement.id = newId;
+
+        // Append the cloned element to the drop target
+        ev.target.appendChild(clonedElement);
+
+        // Make the cloned element draggable within the div
+        var draggableInstance = new Draggabilly(clonedElement, {
+          containment: "#div3",
+        });
+      }
+    </script>
+
+    <script>
+      console.log("Parent Element:", parrr.id);
+
+      l = document.getElementById("drag1");
+      dr = new Draggabilly(l, {
+        containment: "#div3",
+      });
+      l = document.getElementById("drag2");
+      dr = new Draggabilly(l, {
+        containment: "#div3",
+      });
+    </script>
+
+</body>
+
+</html>

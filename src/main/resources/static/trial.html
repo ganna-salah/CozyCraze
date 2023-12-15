@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Images</title>
+    <style>
+        #drop-zone {
+            width: 700px;
+            height: 500px;
+            border: 2px dashed #aaa;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .draggable-image {
+            width: 100px;
+            height: 100px;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+
+<div id="drop-zone" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+    Drop images here
+</div>
+<div style="display: inline-block;">
+
+    <img src="stickers/images-PhotoRoom.png-PhotoRoom.png" class="draggable-image" draggable="true">
+
+    <img src="stickers/s1-PhotoRoom.png-PhotoRoom.png" class="draggable-image" draggable="true">
+    
+    <img src="stickers/s1-PhotoRoom.png-PhotoRoom.png" class="draggable-image" draggable="true">
+    
+    <img src="stickers/s1-PhotoRoom.png-PhotoRoom.png" class="draggable-image" draggable="true">
+    
+</div>
+<script>
+    function dropHandler(event) {
+        event.preventDefault();
+
+        const dropZone = document.getElementById('drop-zone');
+
+        // Get the dragged element
+        const draggedElement = document.querySelector('.dragging');
+
+        // Calculate the drop position relative to the drop zone
+        const x = event.clientX - dropZone.getBoundingClientRect().left - draggedElement.width / 2;
+        const y = event.clientY - dropZone.getBoundingClientRect().top - draggedElement.height / 2;
+
+        // Set the position of the dragged element
+        draggedElement.style.left = `${x}px`;
+        draggedElement.style.top = `${y}px`;
+
+        // Show the dragged element
+        draggedElement.classList.remove('dragging');
+
+        // Remove the event listeners for the dragged element
+        removeDragListeners(draggedElement);
+    }
+
+    function dragOverHandler(event) {
+        // Prevent the default behavior to enable dropping
+        event.preventDefault();
+    }
+
+    document.addEventListener('dragstart', (event) => {
+        // Add a class to the dragged element
+        event.target.classList.add('dragging');
+
+        // Add event listeners for the dragged element
+        addDragListeners(event.target);
+    });
+
+    function addDragListeners(element) {
+        element.addEventListener('dragend', () => {
+            // Remove the class when the drag operation ends
+            element.classList.remove('dragging');
+            // Remove the event listeners for the dragged element
+            removeDragListeners(element);
+        });
+    }
+
+    function removeDragListeners(element) {
+        element.removeEventListener('dragend', () => {});
+    }
+</script>
+
+</body>
+</html>
