@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drag and Drop Images</title>
-   </head>
+    <title>Document</title>
+</head>
 <body>
+    <form th:action="@{/submitForm}" method="post" th:object="${formObject}">
 
+        <input type="text" th:field="*{fieldName}" />
 
-<form action="submitForm" method="post">
+        
+        <input type="number" th:field="*{age}" />
+
     
-    <input type="text" name="ganna" />
+        <button type="submit">Submit</button>
     
-    <button type="submit">Submit</button>
-</form>
+    </form>
 
 </body>
 </html>
