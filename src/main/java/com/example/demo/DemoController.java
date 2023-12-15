@@ -22,6 +22,7 @@ public class DemoController {
             // Read the content of the file as a string
             String content = FileCopyUtils.copyToString(reader);
             return content;
+
         } finally {
             reader.close();
         }
