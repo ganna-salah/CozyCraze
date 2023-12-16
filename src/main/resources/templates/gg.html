@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draggable and Removable Div</title>
+    <style>
+      #draggableDiv {
+        width: 200px;
+        height: 100px;
+        background-color: #eee;
+        position: absolute;
+        cursor: move;
+      }
+
+      #removeButton {
+        cursor: pointer;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="draggableDiv" draggable="true">
+      <span id="removeButton" onclick="removeDiv()"
+        >X
+        <img
+          id="drag1"
+          src="stickers/images-PhotoRoom.png-PhotoRoom (1).png"
+          style="width: 80px"
+          ondragstart="drag(event)"
+      /></span>
+    </div>
+
+    <script>
+      function removeDiv() {
+        var draggableDiv = document.getElementById("draggableDiv");
+        draggableDiv.parentNode.removeChild(draggableDiv);
+      }
+
+      var dragItem = document.getElementById("draggableDiv");
+      var offsetX, offsetY;
+
+      dragItem.addEventListener("dragstart", function (e) {
+        offsetX = e.clientX - dragItem.getBoundingClientRect().left;
+        offsetY = e.clientY - dragItem.getBoundingClientRect().top;
+
+        e.dataTransfer.setData("text/plain", ""); // Required for Firefox
+      });
+
+      document.addEventListener("dragover", function (e) {
+        e.preventDefault();
+      });
+
+      document.addEventListener("drop", function (e) {
+        e.preventDefault();
+        dragItem.style.left = e.clientX - offsetX + "px";
+        dragItem.style.top = e.clientY - offsetY + "px";
+      });
+    </script>
+  </body>
+</html>
