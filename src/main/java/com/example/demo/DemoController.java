@@ -23,7 +23,6 @@ public class DemoController {
         return "hello";
     }
 
-
     public class YourFormObject {
         private String regNameForm;
         private String regEmailForm;
