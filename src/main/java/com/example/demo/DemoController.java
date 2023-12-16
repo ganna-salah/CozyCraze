@@ -18,9 +18,12 @@ public class DemoController {
 
     @PostMapping("/submitForm")
     public String submitForm(YourFormObject yourFormObject) {
-       // registerUser("sandra","sandrabassem2002@gmail.com","01200559178","sandra_bassem","123456sandra");
+        DemoServicesIMPL trial=new DemoServicesIMPL();
+        System.out.println(trial.connection);
 
-        return "home";
+        trial.registerUser("sandra","sandra2002@gmail.com","01200559178","sandra_bassem","123456sandra");
+
+        return "hello";
     }
 
 
