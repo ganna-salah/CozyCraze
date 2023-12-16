@@ -10,41 +10,56 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DemoController {
 
     @GetMapping("/showForm")
-    
     public String showForm(Model model) {
-        model.addAttribute("formObject", new YourFormObject());
-        return "trial";
+        model.addAttribute("RegisterFormObject", new YourFormObject());
+        return "main";
     }
 
-    @PostMapping("/submitForm")
+    @PostMapping("/RegisterForm")
     public String submitForm(YourFormObject yourFormObject) {
         DemoServicesIMPL trial=new DemoServicesIMPL();
         System.out.println(trial.connection);
-
-        trial.registerUser("sandra","sandra2002@gmail.com","01200559178","sandra_bassem","123456sandra");
-
+        trial.registerUser(yourFormObject.getRegNameForm(),yourFormObject.getRegEmailForm(),yourFormObject.getRegPhoneForm(),yourFormObject.getRegUsernameForm(),yourFormObject.getRegPasswordForm());
         return "hello";
     }
 
 
     public class YourFormObject {
-        private String fieldName;
-        private int age;
+        private String regNameForm;
+        private String regEmailForm;
+        private String regPhoneForm;
+        private String regUsernameForm;
+        private String regPasswordForm;
 
-        public int getAge() {
-            return age;
+        public void setRegEmailForm(String regEmailForm) {
+            this.regEmailForm = regEmailForm;
         }
-
-        public String getFieldName() {
-            return fieldName;
+        public void setRegNameForm(String regNameForm) {
+            this.regNameForm = regNameForm;
         }
-
-        public void setAge(int age) {
-            this.age = age;
+        public void setRegPasswordForm(String regPasswordForm) {
+            this.regPasswordForm = regPasswordForm;
         }
-
-        public void setFieldName(String fieldName) {
-            this.fieldName = fieldName;
+        public void setRegPhoneForm(String regPhoneForm) {
+            this.regPhoneForm = regPhoneForm;
+        }
+        public void setRegUsernameForm(String regUsernameForm) {
+            this.regUsernameForm = regUsernameForm;
+        }
+        public String getRegEmailForm() {
+            return regEmailForm;
+        }
+        public String getRegNameForm() {
+            return regNameForm;
+        }
+        public String getRegPasswordForm() {
+            return regPasswordForm;
+        }
+        public String getRegPhoneForm() {
+            return regPhoneForm;
+        }
+        public String getRegUsernameForm() {
+            return regUsernameForm;
         }
     }
 }

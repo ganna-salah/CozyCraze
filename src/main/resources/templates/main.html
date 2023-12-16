@@ -437,32 +437,23 @@
 </form>
   <!-- Register Modal -->
   <form th:action="@{/RegisterForm}" method="post" th:object="${RegisterFormObject}">
-    <input type="text" th:field="*{nameForm}" />
-    <input type="text" th:field="*{emailForm}" />
-    <input type="number" th:field="*{passwordForm}" />
-    <input type="text" th:field="*{usernameForm}" />
-    <input type="text" th:field="*{PhoneForm}" />
-
   <div id="Register" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom" >
       <div class="container w3-center">
         <i onclick="document.getElementById('Register').style.display='none'"
           class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
         <h2 class="wide">Register</h2>
-        <p>
-        
-        </p>
         <p >
-          <input class="input w3-border" type="text" placeholder="Enter Name" required />
+          <input class="input w3-border" type="text" placeholder="Enter Name" th:field="*{regNameForm}" required />
           <br>
-          <input class="input w3-border" type="text" placeholder="Enter Email" required />
+          <input class="input w3-border" type="text" placeholder="Enter Email" th:field="*{regEmailForm}" required />
           <br>
-          <input class="input w3-border" type="password" placeholder="Enter password" required />
+          <input class="input w3-border" type="text" placeholder="Enter Phone" th:field="*{regPhoneForm}" required />
           <br>
-          <input class="input w3-border" type="text" placeholder="Enter username" required/>
+          <input class="input w3-border" type="text" placeholder="Enter username" th:field="*{regUsernameForm}"  required/>
           <br>
-          <input class="input w3-border" type="text" placeholder="Enter Phone" required />
-        </p>
+          <input class="input w3-border" type="password" placeholder="Enter password" th:field="*{regPasswordForm}" required />
+          </p>
         <button type="button" class="button w3-padding-large w3-red w3-margin-bottom"
           onclick="document.getElementById('Register').style.display='none'">
           Register
