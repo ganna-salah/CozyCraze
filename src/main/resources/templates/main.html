@@ -29,13 +29,22 @@
     .wide {
       font-family: "Montserrat", sans-serif;
     }
-
     #div3 {
-      width: 500px;
-      height: 400px;
-      padding: 10px;
-      /* border: 1px solid #000000; */
-    }
+        width: 500px;
+        height: 400px;
+        padding: 10px;
+        /* border: 1px solid #000000; */
+
+      }
+      #removeButtonDiv {
+        position: absolute;
+            top: 20px; /* Adjust the top value to position it after div3 */
+            left: 50%; /* Center the button horizontally */
+            transform: translateX(-50%);
+            margin-bottom: 20px;
+            margin-top: 20px;
+            padding: 50px;
+        }
   </style>
 </head>
 
@@ -172,10 +181,6 @@
         border: solid;
       "></a>
 
-
-
-
-
       </div>
 
       <a onclick="myAccFunc('StickersAcc')" href="javascript:void(0)" class="button w3-block w3-white w3-left-align"
@@ -189,28 +194,25 @@
           <button id="search-button">Search</button>
         </div>
 
-        <div style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content;">
-          <img id="drag1" src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;"
-            ondragstart="drag(event)">
+        <div  style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content;">
+         
+        <img
+          id="drag1"
+          src="stickers/images-PhotoRoom.png-PhotoRoom (1).png"
+          style="width: 80px"
+          ondragstart="drag(event)"
+      />
           <img id="drag2" src="stickers/images-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag3" src="stickers/s1-PhotoRoom.png-PhotoRoom.png" style="width: 80px;" ondragstart="drag(event)">
-          <img id="drag4" src="stickers/itachi-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag5" src="stickers/formula1-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag6" src="stickers/formula2-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag7" src="stickers/formula3-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag8" src="stickers/naruto-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag9" src="stickers/whale2-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag10" src="stickers/whaleOrca-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag11" src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;"
-            ondragstart="drag(event)">
+          <img id="drag3" src="stickers/s1-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag4" src="stickers/itachi-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag5" src="stickers/formula1-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag6" src="stickers/formula2-PhotoRoom.png-PhotoRoom.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag7" src="stickers/formula3-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag8" src="stickers/naruto-PhotoRoom.png-PhotoRoom.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag9" src="stickers/whale2-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag10" src="stickers/whaleOrca-PhotoRoom.png-PhotoRoom.png" style="width: 80px;"ondragstart="drag(event)">
+          <img id="drag11" src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px;"ondragstart="drag(event)">
         </div>
 
 
@@ -218,6 +220,7 @@
         <form action="upload.php" method="post" enctype="multipart/form-data">
           <input type="file" name="imageUpload" id="imageUpload" accept="image/*">
         </form>
+
       </div>
 
       <a href="#footer" class="w3-bar-item button w3-padding">Contact</a>
@@ -252,7 +255,7 @@
     </header>
 
     <!-- design section -->
-    <div id="div" style="
+    <div id="div"    style="
           max-height: 400px;
           display: flex;
           align-items: center;
@@ -261,7 +264,8 @@
           border: 2px solid !important;
         ">
       <!-- only used for the default image whose id would be taken to change img src -->
-      <img id="design_image" src="products/pocketed hoodie.png" style="
+      <img  id="design_image" src="products/pocketed hoodie.png"
+        style="
             position: relative;
             border-bottom: 2px solid;
             border-top: 2px solid;
@@ -270,8 +274,14 @@
             max-height: inherit !important;
           " />
     </div>
-
-    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" class="w3-display-middle" style="
+    <button onclick="removeContent()">Remove all stickers</button>
+    <button > Save </button>
+    <div
+    id="div3"
+    ondrop="drop(event)"
+    ondragover="allowDrop(event)"
+    class="w3-display-middle"
+    style="
       position: absolute; /* or position: relative; depending on your layout */
       z-index: 2; /* Set a higher value to place it on top */
       max-height: 400px;
@@ -279,10 +289,15 @@
       align-items: center;
       justify-content: center !important;
       width: 100%;
+      margin-bottom: 20px;
       /* border: 2px solid !important; */
-    ">
-    </div>
-
+    "
+  >
+  
+  
+   
+  </div>
+  
 
     <!-- Subscribe section -->
     <div class="container w3-black w3-padding-32">
@@ -295,7 +310,7 @@
         Subscribe
       </button>
     </div>
-
+  
     <!-- Footer -->
     <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
       <div class="w3-row-padding">
@@ -512,36 +527,46 @@
     // drag and drop funtions
 
     function allowDrop(ev) {
-      ev.preventDefault();
-    }
+        ev.preventDefault();
+      }
 
-    function drag(ev) {
-      ev.dataTransfer.setDragImage(ev.target, 0, 0); // Set the dragged image
-      ev.dataTransfer.setData("text", ev.target.id); // Set the ID of the dragged element
-    }
-    function drop(ev) {
-      ev.preventDefault();
-      var data = ev.dataTransfer.getData("text");
-      var originalElement = document.getElementById(data);
+      function drag(ev) {
+        ev.dataTransfer.setDragImage(ev.target, 0, 0); // Set the dragged image
+        ev.dataTransfer.setData("text", ev.target.id); // Set the ID of the dragged element
+      }
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var originalElement = document.getElementById(data);
 
-      // Create a copy of the original element
-      var clonedElement = originalElement.cloneNode(true);
+        // Create a copy of the original element
+        var clonedElement = originalElement.cloneNode(true);
 
-      // Set a new ID for the cloned element (optional)
-      var newId = "drag" + new Date().getTime();
-      clonedElement.id = newId;
+        // Set a new ID for the cloned element (optional)
+        var newId = "drag" + new Date().getTime();
+        clonedElement.id = newId;
 
-      // Append the cloned element to the drop target
-      ev.target.appendChild(clonedElement);
+        // Append the cloned element to the drop target
+        ev.target.appendChild(clonedElement);
 
-      // Make the cloned element draggable within the div
-      var draggableInstance = new Draggabilly(clonedElement, {
-        containment: "#div3",
-      });
-    }
-  </script>
+        // Make the cloned element draggable within the div
+        var draggableInstance = new Draggabilly(clonedElement, {
+          containment: "#div3",
+        });
+      }
+      function removeContent() {
+        // Get the reference to the div
+        var myDiv = document.getElementById("div3");
 
+        // Remove all child nodes (content) from the div
+        while (myDiv.firstChild) {
+          myDiv.removeChild(myDiv.firstChild);
+        }
+      }
+     
+    </script>
 
+   
 </body>
 
 </html>
