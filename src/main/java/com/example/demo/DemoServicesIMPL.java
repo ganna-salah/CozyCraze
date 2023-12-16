@@ -2,13 +2,11 @@ package com.example.demo;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import com.mysql.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 class DemoServicesIMPL implements DemoServices {
 
@@ -42,7 +40,7 @@ class DemoServicesIMPL implements DemoServices {
     }
 
     @Override
-    public void  registerUser(String name, String Email, String username, String phone, String password) {
+    public void  registerUser(String name, String Email, String phone,  String username,String password) {
         DemoUser user = new DemoUser(name,Email,phone,username,password);
         System.out.println(user.toString());
         try{

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+   <!-- Login Modal -->
+   <div class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom" style="padding: 32px">
+      <div class="container w3-center">
+        <h2 class="wide">Login</h2>
+        
+        <form th:action="@{/LoginForm}" method="post" th:object="${loginFormObject}">
+          <!-- <label>Username:</label> -->
+          <input type="text" class="input w3-border" th:field="*{usernameField}" />
+          <br>
+          <!-- <label>Password:</label> -->
+          <input type="password" class="input w3-border" placeholder="Enter Password" th:field="*{passwordField}" required/>
+          <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom">
+              Login
+          </button>
+      </form>
+      
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

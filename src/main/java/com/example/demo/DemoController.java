@@ -9,21 +9,46 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class DemoController {
 
-    @GetMapping("/showForm")
+    
+    // @GetMapping("/showForm")
+    // public String showForm(Model model) {
+    //     System.out.println("ganna salah eldin abd el RAZEKKK");
+    //     model.addAttribute("loginFormObject", new loginFormObject());
+    //     System.out.println("bbb");
+    //     return "main";
+    // }
+
+     @GetMapping("/showForm")
     public String showForm(Model model) {
-        model.addAttribute("RegisterFormObject", new YourFormObject());
+        System.out.println("ganna salah eldin abd el RAZEKKK");
+        model.addAttribute("RegisterFormObject", new REGFormObject());
+        System.out.println("bbb");
         return "main";
     }
 
     @PostMapping("/RegisterForm")
-    public String submitForm(YourFormObject yourFormObject) {
+    public String submitForm(REGFormObject yourFormObject) {
         DemoServicesIMPL trial=new DemoServicesIMPL();
         System.out.println(trial.connection);
         trial.registerUser(yourFormObject.getRegNameForm(),yourFormObject.getRegEmailForm(),yourFormObject.getRegPhoneForm(),yourFormObject.getRegUsernameForm(),yourFormObject.getRegPasswordForm());
         return "hello";
     }
 
-    public class YourFormObject {
+    @PostMapping("/LoginForm")
+    public String submitForm(loginFormObject yourFormObject) {
+        DemoServicesIMPL trial=new DemoServicesIMPL();
+        System.out.println(trial.connection);
+        boolean result=trial.validateLogin(yourFormObject.getUsernameField(),yourFormObject.getPasswordField());
+        if(result==true){
+            return "hello";
+        }
+        else{
+            return "home";
+        }
+        
+    }
+
+    public class REGFormObject {
         private String regNameForm;
         private String regEmailForm;
         private String regPhoneForm;
@@ -60,6 +85,27 @@ public class DemoController {
         public String getRegUsernameForm() {
             return regUsernameForm;
         }
+    }
+
+    public class loginFormObject{
+
+        private String usernameField;
+        private String passwordField;
+
+        public void setPasswordField(String passwordField) {
+            this.passwordField = passwordField;
+        }
+        public void setUsernameField(String usernameField) {
+            this.usernameField = usernameField;
+        }
+        public String getPasswordField() {
+            return passwordField;
+        }
+        public String getUsernameField() {
+            return usernameField;
+        }
+
+
     }
 }
 
