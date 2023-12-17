@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DemoController {
 
     
-    @GetMapping("/showForm")
-    public String showForm(Model model1,Model model2) {
+    @GetMapping("/main")
+    public String showForm(Model model1,Model model2,Model model3) {
         System.out.println("ganna salah eldin abd el RAZEKKK");
         model1.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
+
         System.out.println("bbb");
         return "main";
     }
@@ -29,34 +30,37 @@ public class DemoController {
     // }
 
 
-    //  @GetMapping("/showForm")
-    // public String showForm(Model model) {
-    //     System.out.println("ganna salah eldin abd el RAZEKKK");
-    //     model.addAttribute("RegisterFormObject", new REGFormObject());
-    //     System.out.println("bbb");
-    //     return "main";
-    // }
-
     @PostMapping("/RegisterForm")
-    public String submitForm(REGFormObject yourFormObject) {
+    public String submitForm(REGFormObject yourFormObject,Model model3) {
+        String textToShow = " Welcome !";
         DemoServicesIMPL trial=new DemoServicesIMPL();
         System.out.println(trial.connection);
         trial.registerUser(yourFormObject.getRegNameForm(),yourFormObject.getRegEmailForm(),yourFormObject.getRegPhoneForm(),yourFormObject.getRegUsernameForm(),yourFormObject.getRegPasswordForm());
-        return "hello";
+        model3.addAttribute("myText", textToShow);
+        return "main";
     }
 
+
+    //boolean flag=false;
     @PostMapping("/LoginForm")
-    public String submitForm(loginFormObject yourFormObject) {
+    public String submitForm(loginFormObject yourFormObject,Model model3,Model model) {
+
         DemoServicesIMPL trial=new DemoServicesIMPL();
         System.out.println(trial.connection);
         boolean result=trial.validateLogin(yourFormObject.getUsernameField(),yourFormObject.getPasswordField());
         if(result==true){
-            return "hello";
+            model3.addAttribute("myText", " Welcome !");
+            model.addAttribute("scripttrial2", "null");
+            
+            return "main";
         }
         else{
-            return "home";
+            model3.addAttribute( "invalidtext", "invalid username or password");
+            //model3.addAttribute("myText", "failed to login try again");
+            model.addAttribute("scripttrial", "null");
+            return "main";
+           
         }
-        
     }
 
     public class REGFormObject {

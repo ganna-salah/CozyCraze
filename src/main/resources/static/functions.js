@@ -1,4 +1,23 @@
 
+function downloadImage() {
+  var divToConvert = document.getElementById('div1');
+
+  html2canvas(divToConvert).then(function(canvas) {
+      // Convert canvas to image
+      var image = new Image();
+      image.src = canvas.toDataURL('image/png');
+
+      // Create a link and trigger the download
+      var link = document.createElement('a');
+      link.href = image.src;
+      link.download = 'myImage.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  });
+}
+
+
 // Accordion
 function myAccFunc(acc) {
   var x = document.getElementById(acc);
@@ -126,41 +145,41 @@ function decideColor(color) {
 // drag and drop funtions
 
 function allowDrop(ev) {
-    ev.preventDefault();
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setDragImage(ev.target, 0, 0); // Set the dragged image
+  ev.dataTransfer.setData("text", ev.target.id); // Set the ID of the dragged element
+}
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  var originalElement = document.getElementById(data);
+
+  // Create a copy of the original element
+  var clonedElement = originalElement.cloneNode(true);
+
+  // Set a new ID for the cloned element (optional)
+  var newId = "drag" + new Date().getTime();
+  clonedElement.id = newId;
+
+  // Append the cloned element to the drop target
+  ev.target.appendChild(clonedElement);
+
+  // Make the cloned element draggable within the div
+  var draggableInstance = new Draggabilly(clonedElement, {
+    containment: "#div3",
+  });
+}
+function removeContent() {
+  // Get the reference to the div
+  var myDiv = document.getElementById("div3");
+
+  // Remove all child nodes (content) from the div
+  while (myDiv.firstChild) {
+    myDiv.removeChild(myDiv.firstChild);
   }
+}
 
-  function drag(ev) {
-    ev.dataTransfer.setDragImage(ev.target, 0, 0); // Set the dragged image
-    ev.dataTransfer.setData("text", ev.target.id); // Set the ID of the dragged element
-  }
-  function drop(ev) {
-    ev.preventDefault();
-    var data = ev.dataTransfer.getData("text");
-    var originalElement = document.getElementById(data);
 
-    // Create a copy of the original element
-    var clonedElement = originalElement.cloneNode(true);
-
-    // Set a new ID for the cloned element (optional)
-    var newId = "drag" + new Date().getTime();
-    clonedElement.id = newId;
-
-    // Append the cloned element to the drop target
-    ev.target.appendChild(clonedElement);
-
-    // Make the cloned element draggable within the div
-    var draggableInstance = new Draggabilly(clonedElement, {
-      containment: "#div3",
-    });
-  }
-  function removeContent() {
-    // Get the reference to the div
-    var myDiv = document.getElementById("div3");
-
-    // Remove all child nodes (content) from the div
-    while (myDiv.firstChild) {
-      myDiv.removeChild(myDiv.firstChild);
-    }
-  }
-  
- 

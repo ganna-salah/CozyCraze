@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <title>Design</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="functions.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <link rel="stylesheet" href="mainpage.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
@@ -235,14 +236,17 @@
       <a href="#footer" class="w3-bar-item button w3-padding">Contact</a>
       <a href="#footer" class="w3-bar-item button w3-padding">Subscribe</a>
 
-        <a href="#" class="w3-bar-item button w3-padding"
-   onclick="document.getElementById('Register').style.display='block'">Register</a>
+      <a id="sideregisterbtn" href="#" class="w3-bar-item button w3-padding"
+        onclick="document.getElementById('Register').style.display='block'">Register</a>
 
-   <a href="javascript:void(0)" class="w3-bar-item button w3-padding"
-   onclick="document.getElementById('login').style.display='block'">Login</a>
+      <a id="sideloginbtn" href="javascript:void(0)" class="w3-bar-item button w3-padding"
+        onclick="document.getElementById('login').style.display='block'">Login</a>
 
-       <a href="#" class="w3-bar-item button w3-padding"
+      <a href="#" class="w3-bar-item button w3-padding"
         onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+
+      <a href="#" class="w3-bar-item button w3-padding"
+        onclick="document.getElementById('success').style.display='block'"></a>
 
   </nav>
 
@@ -262,6 +266,9 @@
     <!-- Push down content on small screens -->
     <div class="w3-hide-large" style="margin-top: 83px"></div>
 
+
+    <h5 style="font-style:italic;" th:text="${myText}"></h5>
+
     <!-- Top header -->
     <header class="container w3-xlarge">
       <p class="w3-left">Design</p>
@@ -270,45 +277,8 @@
         <i class="fa fa-search"></i>
       </p>
     </header>
-
     <!-- design section -->
-    <div id="div" style="
-          max-height: 400px;
-          display: flex;
-          align-items: center;
-          justify-content: center !important;
-          width: 100%;
-          border: 2px solid !important;
-        ">
-      <!-- only used for the default image whose id would be taken to change img src -->
-      <img id="design_image" src="products/pocketed hoodie.png" style="
-            position: relative;
-            border-bottom: 2px solid;
-            border-top: 2px solid;
-            background-color: rgb(237, 170, 173);
-            min-width: inherit !important;
-            max-height: inherit !important;
-          " />
-    </div>
-    <button onclick="removeContent()">Remove all stickers</button>
-    <button> Save </button>
-    <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" class="w3-display-middle" style="
-      position: absolute; /* or position: relative; depending on your layout */
-      z-index: 2; /* Set a higher value to place it on top */
-      max-height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center !important;
-      width: 100%;
-      margin-bottom: 20px;
-      /* border: 2px solid !important; */
-    ">
-
-
-
-    </div>
-
-
+    
     <!-- Subscribe section -->
     <div class="container w3-black w3-padding-32">
       <h1>Subscribe</h1>
@@ -384,9 +354,10 @@
         class="w3-hover-opacity">w3.css</a>
     </div>
 
+
     <!-- End page content -->
   </div>
-<!-- 
+  <!-- 
   Newsletter Modal -->
   <div id="newsletter" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom" style="padding: 32px">
@@ -411,6 +382,20 @@
   </div>
 
 
+  <!-- Welcome Modal -->
+  <div id="success" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom" style="padding: 32px">
+      <div class="container w3-center">
+        <i onclick="document.getElementById('success').style.display='none'"
+          class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
+        <h2 class="wide">WELCOME</h2>
+
+      </div>
+    </div>
+  </div>
+
+
+
   <!--  login modal-->
 
   <div id="login" class="w3-modal">
@@ -420,22 +405,27 @@
           class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
         <h2 class="wide">Login</h2>
 
-        <form th:action="@{/LoginForm}" method="post" th:object="${loginFormObject}">
-          <input class="input w3-border" type="text" placeholder="Enter Username" th:field="*{usernameField}" required />
+        <form id="mainpageloginform" th:action="@{/LoginForm}" method="post" th:object="${loginFormObject}">
+          <input class="input w3-border" type="text" placeholder="Enter Username" th:field="*{usernameField}"
+            required />
           <br>
-          <input class="input w3-border" type="password" placeholder="Enter Password" required th:field="*{passwordField}" />
+          <input class="input w3-border" type="password" placeholder="Enter Password" required
+            th:field="*{passwordField}" />
           <br>
+          <p th:text="${invalidtext}"></p>
           <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Login</button>
+          <script th:if="${scripttrial}">
+            document.getElementById('login').style.display = 'block';
+          </script>
+          <script th:if="${scripttrial2}">
+            document.getElementById('sideloginbtn').style.display = 'none';
+            document.getElementById('sideregisterbtn').style.display = 'none';
+          </script>
         </form>
 
       </div>
     </div>
   </div>
-
-
-
-
-
 
   <!-- Register Modal -->
 
@@ -446,28 +436,27 @@
           class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
         <h2 class="wide">Register</h2>
 
-        <!-- <form >
-          <input value="name" class="input w3-border" type="text" placeholder="Enter Name"  required />
-          <input value="name" class="input w3-border" type="text" placeholder="Enter Email" required  />
-          <input value="name" class="input w3-border" type="text" placeholder="Enter Phone"  required />
-          <input value="name" class="input w3-border" type="text" placeholder="Enter username" required />
-          <input value="name" class="input w3-border" type="password" placeholder="Enter password" required />
-          <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
-        </form> -->
-
 
         <form th:action="@{/RegisterForm}" method="post" th:object="${RegisterFormObject}">
-          <input value="name" class="input w3-border" type="text" placeholder="Enter Name" th:field="*{regNameForm}" required />
-          <input value="name" class="input w3-border" type="text" placeholder="Enter Email" required th:field="*{regEmailForm}" />
-          <input value="name" class="input w3-border" type="text" placeholder="Enter Phone" th:field="*{regPhoneForm}" required />
-          <input value="name" class="input w3-border" type="text" placeholder="Enter username" th:field="*{regUsernameForm}"required />
-          <input value="name" class="input w3-border" type="password" placeholder="Enter password" th:field="*{regPasswordForm}"required />
+          <input value="name" class="input w3-border" type="text" placeholder="Enter Name" th:field="*{regNameForm}"
+            required />
+          <br>
+          <input value="name" class="input w3-border" type="text" placeholder="Enter Email" required
+            th:field="*{regEmailForm}" />
+          <br>
+          <input value="name" class="input w3-border" type="text" placeholder="Enter Phone" th:field="*{regPhoneForm}"
+            required />
+          <br>
+          <input value="name" class="input w3-border" type="text" placeholder="Enter username"
+            th:field="*{regUsernameForm}" required />
+          <br>
+          <input value="name" class="input w3-border" type="password" placeholder="Enter password"
+            th:field="*{regPasswordForm}" required />
           <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
         </form>
       </div>
     </div>
   </div>
-
 
 
   <!-- 
