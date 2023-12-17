@@ -278,7 +278,41 @@
       </p>
     </header>
     <!-- design section -->
+    <div id="div1" style="
+          max-height: 400px;
+          display: flex;
+          align-items: center;
+          justify-content: center !important;
+          width: 100%;
+          border: 2px solid !important;
+        ">
+      <!-- only used for the default image whose id would be taken to change img src -->
+      <img id="design_image" src="products/pocketed hoodie.png" style="
+            position: relative;
+            border-bottom: 2px solid;
+            border-top: 2px solid;
+            background-color: rgb(237, 170, 173);
+            min-width: inherit !important;
+            max-height: inherit !important;
+          " />
+          <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" class="w3-display-middle" style="
+          position: absolute; /* or position: relative; depending on your layout */
+          z-index: 2; /* Set a higher value to place it on top */
+          max-height: 400px;
+          display: flex;
+          align-items: center;
+          justify-content: center !important;
+          width: 100%;
+          margin-bottom: 20px;
+          /* border: 2px solid !important; */
+        ">
     
+    
+    
+        </div>
+    </div>
+    <button onclick="removeContent()">Remove all stickers</button>
+    <button onclick="downloadImage()"> Save </button>
     <!-- Subscribe section -->
     <div class="container w3-black w3-padding-32">
       <h1>Subscribe</h1>
