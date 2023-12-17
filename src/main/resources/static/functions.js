@@ -162,4 +162,5 @@ function allowDrop(ev) {
       myDiv.removeChild(myDiv.firstChild);
     }
   }
+  
  

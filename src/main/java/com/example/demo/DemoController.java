@@ -10,21 +10,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DemoController {
 
     
-    // @GetMapping("/showForm")
+    @GetMapping("/showForm")
+    public String showForm(Model model1,Model model2) {
+        System.out.println("ganna salah eldin abd el RAZEKKK");
+        model1.addAttribute("loginFormObject", new loginFormObject());
+        model2.addAttribute("RegisterFormObject", new REGFormObject());
+        System.out.println("bbb");
+        return "main";
+    }
+
+
+    //     @GetMapping("/showForm")
     // public String showForm(Model model) {
     //     System.out.println("ganna salah eldin abd el RAZEKKK");
-    //     model.addAttribute("loginFormObject", new loginFormObject());
+    //     model.addAttribute("RegisterFormObject", new REGFormObject());
     //     System.out.println("bbb");
     //     return "main";
     // }
 
-     @GetMapping("/showForm")
-    public String showForm(Model model) {
-        System.out.println("ganna salah eldin abd el RAZEKKK");
-        model.addAttribute("RegisterFormObject", new REGFormObject());
-        System.out.println("bbb");
-        return "main";
-    }
+
+    //  @GetMapping("/showForm")
+    // public String showForm(Model model) {
+    //     System.out.println("ganna salah eldin abd el RAZEKKK");
+    //     model.addAttribute("RegisterFormObject", new REGFormObject());
+    //     System.out.println("bbb");
+    //     return "main";
+    // }
 
     @PostMapping("/RegisterForm")
     public String submitForm(REGFormObject yourFormObject) {

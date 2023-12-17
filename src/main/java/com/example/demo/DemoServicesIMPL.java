@@ -3,15 +3,14 @@ package com.example.demo;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import com.mysql.*;
+//import java.util.ArrayList;
+//import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 class DemoServicesIMPL implements DemoServices {
 
     @Autowired
-    static List<DemoUser> users = new ArrayList();
+    //static List<DemoUser> users = new ArrayList();
     Connection connection;
 
     public DemoServicesIMPL() {//CONSTRUCTOR
