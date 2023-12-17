@@ -1,22 +1,4 @@
 
-function downloadImage() {
-  var divToConvert = document.getElementById('div1');
-
-  html2canvas(divToConvert).then(function(canvas) {
-      // Convert canvas to image
-      var image = new Image();
-      image.src = canvas.toDataURL('image/png');
-
-      // Create a link and trigger the download
-      var link = document.createElement('a');
-      link.href = image.src;
-      link.download = 'myImage.png';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-  });
-}
-
 
 // Accordion
 function myAccFunc(acc) {
