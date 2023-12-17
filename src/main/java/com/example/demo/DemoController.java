@@ -12,11 +12,8 @@ public class DemoController {
     
     @GetMapping("/main")
     public String showForm(Model model1,Model model2,Model model3) {
-        System.out.println("ganna salah eldin abd el RAZEKKK");
         model1.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
-
-        System.out.println("bbb");
         return "main";
     }
 
