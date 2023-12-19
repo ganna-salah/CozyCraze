@@ -51,6 +51,70 @@
           class="w3-bar-item w3-button w3-padding-large w3-hide-small"
           >BRAND</a
         >
+        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+        onclick="document.getElementById('homeLogin').style.display='block'">LOGIN</a>
+       
+        <div id="homeLogin" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom">
+              <div class="container w3-center">
+                <i onclick="document.getElementById('homeLogin').style.display='none'"
+                  class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
+                <h2 class="wide">Login</h2>
+        
+                <form id="homepageloginform" th:action="@{/homeLoginForm}" method="post" th:object="${homeloginFormObject}">
+                  <input class="input w3-border" type="text" placeholder="Enter Username" th:field="*{usernameField}"
+                    required />
+                  <br>
+                  <input class="input w3-border" type="password" placeholder="Enter Password" required
+                    th:field="*{passwordField}" />
+                  <br>
+                  <p th:text="${invalidtext}"></p>
+                  <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Login</button>
+                  <script th:if="${scripttrial}">
+                    document.getElementById('login').style.display = 'block';
+                  </script>
+                  <script th:if="${scripttrial2}">
+                    document.getElementById('sideloginbtn').style.display = 'none';
+                    document.getElementById('sideregisterbtn').style.display = 'none';
+                  </script>
+                </form>
+        
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+          onclick="document.getElementById('homeRegister').style.display='block'">REGISTER</a>
+          <div id="homeRegister" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom">
+              <div class="container w3-center">
+                <i onclick="document.getElementById('homeRegister').style.display='none'"
+                  class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
+                <h2 class="wide">Register</h2>
+        
+        
+                <form th:action="@{/homeRegisterForm}" method="post" th:object="${homeRegisterFormObject}">
+                  <input value="name" class="input w3-border" type="text" placeholder="Enter Name" th:field="*{regNameForm}"
+                    required />
+                  <br>
+                  <input value="name" class="input w3-border" type="text" placeholder="Enter Email" required
+                    th:field="*{regEmailForm}" />
+                  <br>
+                  <input value="name" class="input w3-border" type="text" placeholder="Enter Phone" th:field="*{regPhoneForm}"
+                    required />
+                  <br>
+                  <input value="name" class="input w3-border" type="text" placeholder="Enter username"
+                    th:field="*{regUsernameForm}" required />
+                  <br>
+                  <input value="name" class="input w3-border" type="password" placeholder="Enter password"
+                    th:field="*{regPasswordForm}" required />
+                    <br>
+                  <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        
       </div>
     </div>
 
