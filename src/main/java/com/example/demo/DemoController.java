@@ -14,7 +14,7 @@ public class DemoController {
     public String showForm(Model model1,Model model2,Model model3) {
         model1.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
-        return "main";
+        return "home";
     }
 
 
