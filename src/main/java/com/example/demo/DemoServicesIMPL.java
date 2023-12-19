@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 class DemoServicesIMPL implements DemoServices {
 
+public static DemoUser currentUser;
+
     @Autowired
-    //static List<DemoUser> users = new ArrayList();
+    //static ArrayList<DemoUser> users = new ArrayList();
     Connection connection;
 
     public DemoServicesIMPL() {//CONSTRUCTOR
@@ -25,9 +27,14 @@ class DemoServicesIMPL implements DemoServices {
     public boolean validateLogin(String username ,String password) {
         try{
         Statement mystate =connection.createStatement();
-        ResultSet resultset=mystate.executeQuery("select C_username,C_password from tbl_customer");
+        ResultSet resultset=mystate.executeQuery("select * from tbl_customer");
         while(resultset.next()){
             if(username.equals(resultset.getString("C_username")) && password.equals(resultset.getString("C_password"))){
+                currentUser=new DemoUser();
+                currentUser.setName(resultset.getString("C_Name"));
+                currentUser.setEmail(resultset.getString("C_Email"));
+                currentUser.setPhone(resultset.getString("C_phone"));
+                currentUser.setUsername(resultset.getString("C_Username"));
                 return true;
             }
         }

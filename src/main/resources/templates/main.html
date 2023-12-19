@@ -242,6 +242,12 @@
       <a id="sideloginbtn" href="javascript:void(0)" class="w3-bar-item button w3-padding"
         onclick="document.getElementById('login').style.display='block'">Login</a>
 
+      <a style="display: none;" id="sidelogoutbtn" href="javascript:void(0)" class="w3-bar-item button w3-padding"
+      onclick="document.getElementById('sideloginbtn').style.display='inline-block';
+      document.getElementById('sideregisterbtn').style.display='inline-block';
+      document.getElementById('sidelogoutbtn').style.display='none'; 
+      document.getElementById('welcomeText').style.display='none'">Logout</a>
+
       <a href="#" class="w3-bar-item button w3-padding"
         onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
 
@@ -267,7 +273,7 @@
     <div class="w3-hide-large" style="margin-top: 83px"></div>
 
 
-    <h5 style="font-style:italic;" th:text="${myText}"></h5>
+    <h5 id="welcomeText" style="font-style:italic;" th:text="${myText}"></h5>
 
     <!-- Top header -->
     <header class="container w3-xlarge">
@@ -416,7 +422,7 @@
   </div>
 
 
-  <!-- Welcome Modal -->
+  <!-- Welcome Modal 
   <div id="success" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom" style="padding: 32px">
       <div class="container w3-center">
@@ -426,7 +432,7 @@
 
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 
@@ -454,6 +460,7 @@
           <script th:if="${scripttrial2}">
             document.getElementById('sideloginbtn').style.display = 'none';
             document.getElementById('sideregisterbtn').style.display = 'none';
+            document.getElementById('sidelogoutbtn').style.display= 'inline-block';
           </script>
         </form>
 

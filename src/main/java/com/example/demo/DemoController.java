@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DemoController {
 
     
-    @GetMapping("/home")
+    @GetMapping("/main")
     public String showForm(Model model1,Model model2,Model model3) {
         model1.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
@@ -46,9 +46,8 @@ public class DemoController {
         System.out.println(trial.connection);
         boolean result=trial.validateLogin(yourFormObject.getUsernameField(),yourFormObject.getPasswordField());
         if(result==true){
-            model3.addAttribute("myText", " Welcome !");
+            model3.addAttribute("myText", " Welcome " + DemoServicesIMPL.currentUser.getName() + " !");
             model.addAttribute("scripttrial2", "null");
-            
             return "main";
         }
         else{
@@ -116,5 +115,10 @@ public class DemoController {
         public String getUsernameField() {
             return usernameField;
         }
+
+
     }
 }
+
+
+
