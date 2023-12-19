@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class DemoController {
 
     
-    @GetMapping("/main")
+    @GetMapping("/home")
     public String showForm(Model model1,Model model2,Model model3) {
         model1.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
@@ -116,10 +116,5 @@ public class DemoController {
         public String getUsernameField() {
             return usernameField;
         }
-
-
     }
 }
-
-
-
