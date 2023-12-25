@@ -52,6 +52,11 @@ public static DemoUser currentUser;
         try{
             Statement statement= connection.createStatement();
             statement.executeUpdate("INSERT INTO tbl_customer (C_name,C_Email,C_phone,C_username,C_password) VALUES ( '" + name + "','" +Email+"','"+ phone + "','" + username + "','" + password + "')");
+                currentUser=new DemoUser();
+                currentUser.setName(name);
+                currentUser.setEmail(Email);
+                currentUser.setPhone(phone);
+                currentUser.setUsername(username);
             System.out.println(statement);
         }
         catch(Exception e){

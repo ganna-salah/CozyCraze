@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home page</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lato"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <style>
-      body {
-        font-family: "Lato", sans-serif;
-      }
-      .mySlides {
-        display: none;
-      }
-      #myDiv {
+
+<head>
+  <title>Home page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="mainpage.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    #myDiv {
       padding: 20px;
       text-align: center;
     }
@@ -32,165 +33,139 @@
       background-color: black;
       color: aliceblue;
     }
-    </style>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <div class="w3-top">
-      <div class="w3-bar w3-black w3-card">
-        <a
-          class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
-          href="javascript:void(0)"
-          onclick="myFunction()"
-          title="Toggle Navigation Menu"
-          ><i class="fa fa-bars"></i
-        ></a>
-        <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
-        <a
-          href="#band"
-          class="w3-bar-item w3-button w3-padding-large w3-hide-small"
-          >BRAND</a
-        >
-        <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="w3-top">
+    <div class="w3-bar w3-black w3-card">
+      <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)"
+        onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="#" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+      <a href="#brand" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BRAND</a>
+      <a id="toploginbtn" href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"
         onclick="document.getElementById('homeLogin').style.display='block'">LOGIN</a>
-       
-        <div id="homeLogin" class="w3-modal">
-            <div class="w3-modal-content w3-animate-zoom">
-              <div class="container w3-center">
-                <i onclick="document.getElementById('homeLogin').style.display='none'"
-                  class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
-                <h2 class="wide">Login</h2>
-        
-                <form id="homepageloginform" th:action="@{/homeLoginForm}" method="post" th:object="${homeloginFormObject}">
-                  <input class="input w3-border" type="text" placeholder="Enter Username" th:field="*{usernameField}"
-                    required />
-                  <br>
-                  <input class="input w3-border" type="password" placeholder="Enter Password" required
-                    th:field="*{passwordField}" />
-                  <br>
-                  <p th:text="${invalidtext}"></p>
-                  <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Login</button>
-                  <script th:if="${scripttrial}">
-                    document.getElementById('login').style.display = 'block';
-                  </script>
-                  <script th:if="${scripttrial2}">
-                    document.getElementById('sideloginbtn').style.display = 'none';
-                    document.getElementById('sideregisterbtn').style.display = 'none';
-                  </script>
-                </form>
-        
-              </div>
-            </div>
+
+      <div id="homeLogin" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+          <div class="container w3-center">
+            <i onclick="document.getElementById('homeLogin').style.display='none'"
+              class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
+            <h2 class="wide">Login</h2>
+
+            <form th:action="@{/homeLoginForm}" method="post" th:object="${homeloginFormObject}">
+              <input class="input w3-border" type="text" placeholder="Enter Username" th:field="*{homeusernameField}"
+                required />
+              <br>
+              <input class="input w3-border" type="password" placeholder="Enter Password" required
+                th:field="*{homepasswordField}" />
+              <br>
+              <!-- <p th:text="${homeinvalidtext}"></p> -->
+              <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Login</button>
+              <!-- <script th:if="${scripttrial1}">
+                document.getElementById('homeLogin').style.display = 'block';
+              </script>
+              <script th:if="${scripttrial22}">
+                document.getElementById('toploginbtn').style.display = 'none';
+                document.getElementById('topregisterbtn').style.display = 'none';
+              </script> -->
+            </form>
+
           </div>
+        </div>
+      </div>
 
-          <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"
-          onclick="document.getElementById('homeRegister').style.display='block'">REGISTER</a>
-          <div id="homeRegister" class="w3-modal">
-            <div class="w3-modal-content w3-animate-zoom">
-              <div class="container w3-center">
-                <i onclick="document.getElementById('homeRegister').style.display='none'"
-                  class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
-                <h2 class="wide">Register</h2>
-        
-        
-                <form th:action="@{/homeRegisterForm}" method="post" th:object="${homeRegisterFormObject}">
-                  <input value="name" class="input w3-border" type="text" placeholder="Enter Name" th:field="*{regNameForm}"
-                    required />
-                  <br>
-                  <input value="name" class="input w3-border" type="text" placeholder="Enter Email" required
-                    th:field="*{regEmailForm}" />
-                  <br>
-                  <input value="name" class="input w3-border" type="text" placeholder="Enter Phone" th:field="*{regPhoneForm}"
-                    required />
-                  <br>
-                  <input value="name" class="input w3-border" type="text" placeholder="Enter username"
-                    th:field="*{regUsernameForm}" required />
-                  <br>
-                  <input value="name" class="input w3-border" type="password" placeholder="Enter password"
-                    th:field="*{regPasswordForm}" required />
-                    <br>
-                  <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
-                </form>
-              </div>
-            </div>
+      <a id="topregisterbtn" href="#" class="w3-bar-item w3-button w3-padding-large w3-hide-small"
+        onclick="document.getElementById('homeRegister').style.display='block'">REGISTER</a>
+      <div id="homeRegister" class="w3-modal">
+        <div class="w3-modal-content w3-animate-zoom">
+          <div class="container w3-center">
+            <i onclick="document.getElementById('homeRegister').style.display='none'"
+              class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
+            <h2 class="wide">Register</h2>
+
+
+            <form th:action="@{/homeRegisterForm}" method="post" th:object="${homeRegisterFormObject}">
+              <input value="name" class="input w3-border" type="text" placeholder="Enter Name"
+                th:field="*{homeregNameForm}" required />
+              <br>
+              <input value="name" class="input w3-border" type="text" placeholder="Enter Email" required
+                th:field="*{homeregEmailForm}" />
+              <br>
+              <input value="name" class="input w3-border" type="text" placeholder="Enter Phone"
+                th:field="*{homeregPhoneForm}" required />
+              <br>
+              <input value="name" class="input w3-border" type="text" placeholder="Enter username"
+                th:field="*{homeregUsernameForm}" required />
+              <br>
+              <input value="name" class="input w3-border" type="password" placeholder="Enter password"
+                th:field="*{homeregPasswordForm}" required />
+              <br>
+              <button value="name" type="submit"
+                class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
+            </form>
           </div>
-        
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
+  <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top: 46px">
+    <a href="#brand" class="w3-bar-item w3-button w3-padding-large" onclick="myFunction()">BRAND</a>
+
+  </div>
+
+  <!-- Page content -->
+  <div class="w3-content" style="max-width: 2000px; margin-top: 46px">
+    <!-- Automatic Slideshow Images -->
+    <div class="mySlides w3-display-container w3-center">
+      <img src="images/hoodie11.webp" style="width: 100%" />
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        <h3>Cozy Craze</h3>
+        <p><b>“Everything is designed. Few things are designed well.” - Brian Reed</b></p>
       </div>
     </div>
+    <div class="mySlides w3-display-container w3-center">
+      <img src="images/download.webp" style="width: 100%" />
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        <h3>Cozy Craze</h3>
+        <p><b>Design is intelligence made visible.</b></p>
+      </div>
+    </div>
+    <div class="mySlides w3-display-container w3-center">
+      <img src="images/hoodie3.jpg" style="width: 100%" />
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        <h3>Cozy Craze</h3>
+        <p><b>Design is the silent ambassador of your brand.</b></p>
+      </div>
 
-    <!-- Navbar on small screens (remove the onclick attribute if you want the navbar to always show on top of the content when clicking on the links) -->
-    <div
-      id="navDemo"
-      class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top"
-      style="margin-top: 46px"
-    >
-      <a
-        href="#brand"
-        class="w3-bar-item w3-button w3-padding-large"
-        onclick="myFunction()"
-        >BRAND</a
-      > 
-      
     </div>
 
-    <!-- Page content -->
-    <div class="w3-content" style="max-width: 2000px; margin-top: 46px">
-      <!-- Automatic Slideshow Images -->
-      <div class="mySlides w3-display-container w3-center">
-        <img src="images/hoodie11.webp" style="width: 100%" />
-        <div
-          class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"
-        >
-          <h3>Cozy Craze</h3>
-          <p><b>“Everything is designed. Few things are designed well.” - Brian Reed</b></p>
-        </div>
-      </div>
-      <div class="mySlides w3-display-container w3-center">
-        <img src="images/download.webp" style="width: 100%" />
-        <div
-          class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"
-        >
-          <h3>Cozy Craze</h3>
-          <p><b>Design is intelligence made visible.</b></p>
-        </div>
-      </div>
-      <div class="mySlides w3-display-container w3-center">
-        <img src="images/hoodie3.jpg" style="width: 100%" />
-        <div
-          class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"
-        >
-          <h3>Cozy Craze</h3>
-          <p><b>Design is the silent ambassador of your brand.</b></p>
-        </div>
-        
+    <!-- The Band Section -->
+    <div class="w3-container w3-content w3-center w3-padding-64" style="max-width: 800px" id="band">
+      <h2 class="w3-wide">Cozy Craze</h2>
+      <p class="w3-opacity"><i>Unleash your creativity</i></p>
+      <p class="w3-justify">
+        Welcome to our website where you can bring your clothing design ideas
+        to life! We specialize in customizing and designing a wide range of
+        clothing items including hoodies, t-shirts, and pants. Our
+        user-friendly platform allows you to unleash your creativity and
+        personalize your wardrobe like never before. Whether you're looking to
+        create a unique hoodie that reflects your individual style or design a
+        t-shirt for a special event, we've got you covered. Get started today
+        and let your fashion imagination run wild!
+      </p>
+      <div id="myDiv">
+        <button id="myButton" onclick="redirectToHomePage()">Start your own design</button>
       </div>
 
-      <!-- The Band Section -->
-      <div
-        class="w3-container w3-content w3-center w3-padding-64"
-        style="max-width: 800px"
-        id="band"
-      >
-        <h2 class="w3-wide">Cozy Craze</h2>
-        <p class="w3-opacity"><i>Unleash your creativity</i></p>
-        <p class="w3-justify">
-          Welcome to our website where you can bring your clothing design ideas
-          to life! We specialize in customizing and designing a wide range of
-          clothing items including hoodies, t-shirts, and pants. Our
-          user-friendly platform allows you to unleash your creativity and
-          personalize your wardrobe like never before. Whether you're looking to
-          create a unique hoodie that reflects your individual style or design a
-          t-shirt for a special event, we've got you covered. Get started today
-          and let your fashion imagination run wild!
-        </p>
-        <div id="myDiv">
-          <button id="myButton" onclick="redirectToHomePage()">Start your own design</button>
-        </div>
-
-       <!-- End Page Content -->
+      <!-- End Page Content -->
     </div>
 
-    
+
 
     <script>
       // Automatic Slideshow - change image every 4 seconds
@@ -229,9 +204,10 @@
         }
       };
       function redirectToHomePage() {
-      // Change the URL to the desired HTML page
-      window.location.href = 'main.html';
-    }
+        // Change the URL to the desired HTML page
+        window.location.href = 'main.html';
+      }
     </script>
-  </body>
+</body>
+
 </html>
