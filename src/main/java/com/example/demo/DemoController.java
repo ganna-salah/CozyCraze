@@ -53,7 +53,6 @@ public class DemoController {
         model2.addAttribute("myText", " Welcome " + DemoServicesIMPL.currentUser.getName() + " !");
         model.addAttribute("scripttrial3", "null");
         //model2.addAttribute("scripttrial3", "null");
-        
         return "main";
     }
 
