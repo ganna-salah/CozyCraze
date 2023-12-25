@@ -15,6 +15,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/draggabilly/2.3.0/draggabilly.pkgd.min.js"
     integrity="sha512-wrqGZ9AlrZss+bvssqlLBHyZISI7FVl0JoBDZ4frb4Udgj1IDcip4ausWVzf80m52bdDv5sihhtBsjZgraoQhQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs"></script>
+
 
   <style>
     .sidebar a {
@@ -200,7 +205,7 @@
           <button id="search-button">Search</button>
         </div>
 
-        <div style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content;">
+        <div id="stikcer-container" style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content;">
 
           <img id="drag1" src="stickers/images-PhotoRoom.png-PhotoRoom (1).png" style="width: 80px"
             ondragstart="drag(event)" />
