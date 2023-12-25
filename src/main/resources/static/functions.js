@@ -134,6 +134,27 @@ function drag(ev) {
   ev.dataTransfer.setDragImage(ev.target, 0, 0); // Set the dragged image
   ev.dataTransfer.setData("text", ev.target.id); // Set the ID of the dragged element
 }
+function makeResizableAndDraggable(element) {
+  interact(element)
+    .resizable({
+      edges: { left: true, right: true, bottom: true, top: true },
+      listeners: {
+        move(event) {
+          const { x, y } = event.target.dataset;
+
+          event.target.style.width = `${event.rect.width}px`;
+          event.target.style.height = `${event.rect.height}px`;
+
+          event.target.style.webkitTransform =
+            event.target.style.transform = `translate(${x}px, ${y}px)`;
+           
+        },
+      },
+    })
+    
+}
+makeResizableAndDraggable('#div3');
+
 function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
@@ -153,14 +174,31 @@ function drop(ev) {
   var draggableInstance = new Draggabilly(clonedElement, {
     containment: "#div3",
   });
+  makeResizableAndDraggable('#' + newId);
 }
+// function removeContent() {
+//   // Get the reference to the div
+//   var myDiv = document.getElementById("div3");
+
+//   // Remove all child nodes (content) from the div
+//   while (myDiv.firstChild) {
+//     myDiv.removeChild(myDiv.firstChild);
+//   }
+// }
+
 function removeContent() {
   // Get the reference to the div
   var myDiv = document.getElementById("div3");
 
-  // Remove all child nodes (content) from the div
-  while (myDiv.firstChild) {
-    myDiv.removeChild(myDiv.firstChild);
+  // Loop through each child node of the div
+  for (var i = myDiv.children.length - 1; i >= 0; i--) {
+    var child = myDiv.children[i];
+
+    // Check if the child has an id of "trash"
+    if (child.id !== "trash") {
+      // Remove the child if it doesn't have the id "trash"
+      myDiv.removeChild(child);
+    }
   }
 }
 function downloadImage() {
@@ -179,6 +217,34 @@ function downloadImage() {
       link.click();
       document.body.removeChild(link);
   });
+}
+
+function handleImageUpload() {
+  var input = document.getElementById('imageUpload');
+  var stickerContainer = document.getElementById('stikcer-container');
+
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      var img = document.createElement('img');
+      var newId = 'drag' + new Date().getTime();
+
+      img.id = newId;
+      img.src = e.target.result;
+      img.classList.add('draggable');
+      img.style.width = '80px';
+      img.style.height = '80px';
+      img.style.padding='5px';
+      img.setAttribute('ondragstart', 'drag(event)','drop(ev)');
+
+      stickerContainer.appendChild(img);
+
+     
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
 }
 
 
