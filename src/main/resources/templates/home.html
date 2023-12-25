@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <title>Home page</title>
@@ -61,15 +61,15 @@
               <input class="input w3-border" type="password" placeholder="Enter Password" required
                 th:field="*{homepasswordField}" />
               <br>
-              <!-- <p th:text="${homeinvalidtext}"></p> -->
+               <p th:text="${homeinvalidtext}"></p> 
               <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Login</button>
-              <!-- <script th:if="${scripttrial1}">
+               <!-- <script th:if="${scripttrial1}">
                 document.getElementById('homeLogin').style.display = 'block';
-              </script>
-              <script th:if="${scripttrial22}">
+              </script> -->
+              <!-- <script th:if="${scripttrial22}">
                 document.getElementById('toploginbtn').style.display = 'none';
                 document.getElementById('topregisterbtn').style.display = 'none';
-              </script> -->
+              </script>  -->
             </form>
 
           </div>
@@ -158,9 +158,15 @@
         t-shirt for a special event, we've got you covered. Get started today
         and let your fashion imagination run wild!
       </p>
-      <div id="myDiv">
+      <!-- <div id="myDiv">
         <button id="myButton" onclick="redirectToHomePage()">Start your own design</button>
-      </div>
+      </div> -->
+
+      <div id="myDiv">
+        <form action="/navigateToMain" method="get">
+          <button id="myButton" type="submit">Start your own design</button>
+      </form>
+    </div>
 
       <!-- End Page Content -->
     </div>

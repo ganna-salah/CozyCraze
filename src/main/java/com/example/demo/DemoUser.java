@@ -17,6 +17,9 @@ public class DemoUser {
         this.username=username;
         this.password=password;
     }
+
+    
+
     public void setName(String name) {
         this.name = name;
     }

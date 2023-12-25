@@ -499,8 +499,13 @@
           <br>
           <input value="name" class="input w3-border" type="password" placeholder="Enter password"
             th:field="*{regPasswordForm}" required />
-          <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
-        </form>
+            <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
+            <script th:if="${scripttrial3}">
+              document.getElementById('sideloginbtn').style.display = 'none';
+              document.getElementById('sideregisterbtn').style.display = 'none';
+              document.getElementById('sidelogoutbtn').style.display= 'inline-block';
+            </script>
+          </form>
       </div>
     </div>
   </div>
