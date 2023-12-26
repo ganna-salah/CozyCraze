@@ -1,16 +1,10 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-
-@Entity
 public class DemoUser {
     private String name;
     private String Email;
     private String phone;
     private String username;
-    @Id
     private String password;
 
     DemoUser(){
