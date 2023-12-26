@@ -1,7 +1,6 @@
 package com.example.demo;
 
 import java.lang.ProcessBuilder.Redirect;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
