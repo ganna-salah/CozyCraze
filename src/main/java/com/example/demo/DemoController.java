@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 
@@ -32,11 +33,12 @@ public class DemoController {
     }
 
     @PostMapping("/homeRegisterForm")
-    public String homeRegister(HREGFormObject formObject,Model model,Model model3,Model model4){
+    public String homeRegister(HREGFormObject formObject,Model model,Model model3,Model model4,Model model5,Model model6){
         model3.addAttribute("homeloginFormObject", new HloginFormObject());
         model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
+        model5.addAttribute("loginFormObject", new loginFormObject());
+        model6.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
-        System.out.println(trial.connection);
         trial.registerUser(formObject.getHomeregNameForm(),formObject.getHomeregEmailForm(),formObject.getHomeregPhoneForm(),formObject.getHomeregUsernameForm(),formObject.getHomeregPasswordForm());        
         // model.addAttribute("null", trial);
         System.out.println("register done");
@@ -48,11 +50,9 @@ public class DemoController {
         model4.addAttribute("loginFormObject", new loginFormObject());
         model1.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
-        System.out.println(trial.connection);
         trial.registerUser(yourFormObject.getRegNameForm(),yourFormObject.getRegEmailForm(),yourFormObject.getRegPhoneForm(),yourFormObject.getRegUsernameForm(),yourFormObject.getRegPasswordForm());
-        model2.addAttribute("myText", " Welcome " + DemoServicesIMPL.currentUser.getName() + " !");
+        model2.addAttribute("myText", " Welcome !");// + DemoServicesIMPL.currentUser.getName() + " !");
         model.addAttribute("scripttrial3", "null");
-        //model2.addAttribute("scripttrial3", "null");
         return "main";
     }
 
@@ -62,10 +62,10 @@ public class DemoController {
         model4.addAttribute("loginFormObject", new loginFormObject());
         model1.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
-        System.out.println(trial.connection);
+
         boolean result=trial.validateLogin(yourFormObject.getUsernameField(),yourFormObject.getPasswordField());
         if(result==true){
-            model3.addAttribute("myText", " Welcome " + DemoServicesIMPL.currentUser.getName() + " !");
+            model3.addAttribute("myText", " Welcome !");// + DemoServicesIMPL.currentUser.getName() + " !");
             model.addAttribute("scripttrial2", "null");
             return "main";
         }
@@ -83,11 +83,11 @@ public class DemoController {
         model3.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
-        System.out.println(trial.connection);
+        //System.out.println(trial.connection);
         boolean result=trial.validateLogin(formObject.getHomeusernameField(),formObject.getHomepasswordField());
         if(result==true){
         //model.addAttribute("myText", " Welcome " + DemoServicesIMPL.currentUser.getName() + " !");
-        model.addAttribute("myText", " Welcome " + DemoServicesIMPL.currentUser.getName() + " !");
+        model.addAttribute("myText", " Welcome !");// + DemoServicesIMPL.currentUser.getName() + " !");
         model.addAttribute("scripttrial2", "null");
         
         // loginFormObject l= new loginFormObject();
@@ -119,6 +119,8 @@ public class DemoController {
             this.regNameForm = regNameForm;
         }
         public void setRegPasswordForm(String regPasswordForm) {
+        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        //this.regPasswordForm = encoder.encode(regPasswordForm);
             this.regPasswordForm = regPasswordForm;
         }
         public void setRegPhoneForm(String regPhoneForm) {
@@ -179,7 +181,9 @@ public class DemoController {
             this.homeregNameForm = homeregNameForm;
         }
         public void setHomeregPasswordForm(String homeregPasswordForm) {
-            this.homeregPasswordForm = homeregPasswordForm;
+          //  BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        //this.homeregPasswordForm = encoder.encode(homeregPasswordForm);
+           this.homeregPasswordForm = homeregPasswordForm;
         }
         public void setHomeregPhoneForm(String homeregPhoneForm) {
             this.homeregPhoneForm = homeregPhoneForm;
