@@ -53,7 +53,7 @@ public static DemoUser currentUser;
 
     @Override
     public void registerUser(String name, String email, String phone, String username, String password) {
-        DemoUser user = new DemoUser(name, email, phone, username, password);
+        //DemoUser user = new DemoUser(name, email, phone, username, password);
         String encodedPassword = passwordEncoder.encode(password);
 
         try {

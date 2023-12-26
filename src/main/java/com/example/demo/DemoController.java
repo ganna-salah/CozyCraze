@@ -1,16 +1,26 @@
 package com.example.demo;
 
-import java.lang.ProcessBuilder.Redirect;
+// java.lang.ProcessBuilder.Redirect;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+//import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 //import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
-
+//@Validated
 @Controller
 public class DemoController {
 
@@ -33,7 +43,18 @@ public class DemoController {
     }
 
     @PostMapping("/homeRegisterForm")
-    public String homeRegister(HREGFormObject formObject,Model model,Model model3,Model model4,Model model5,Model model6){
+    public String homeRegister(@Valid @ModelAttribute HREGFormObject formObject,BindingResult result ,Model model,Model model3,Model model4,Model model5,Model model6,Model model8){
+        System.out.println("entered homeRegister");
+        if (result.hasErrors()) {
+        System.out.println("entered IF");
+         model3.addAttribute("homeloginFormObject", new HloginFormObject());
+         model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
+        model5.addAttribute("loginFormObject", new loginFormObject());
+        model6.addAttribute("RegisterFormObject", new REGFormObject());
+        model.addAttribute("errors", result.getAllErrors());
+                model8.addAttribute("scripttrial6", "null");
+            return "home";
+        }
         model3.addAttribute("homeloginFormObject", new HloginFormObject());
         model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
         model5.addAttribute("loginFormObject", new loginFormObject());
@@ -42,11 +63,24 @@ public class DemoController {
         trial.registerUser(formObject.getHomeregNameForm(),formObject.getHomeregEmailForm(),formObject.getHomeregPhoneForm(),formObject.getHomeregUsernameForm(),formObject.getHomeregPasswordForm());        
         // model.addAttribute("null", trial);
         System.out.println("register done");
-        return "home";
+        return "main";
     }
 
     @PostMapping("/RegisterForm")
-    public String submitForm(REGFormObject yourFormObject,Model model,Model model2,Model model1,Model model4) {
+    public String submitForm(@Valid @ModelAttribute REGFormObject yourFormObject,BindingResult result,Model model,Model model2,Model model1,Model model4,Model model3,Model model7,Model model5,Model model6,Model model8) {
+        System.out.println("entered mainRegister");
+        if (result.hasErrors()) {
+            
+         model3.addAttribute("homeloginFormObject", new HloginFormObject());
+         model.addAttribute("homeRegisterFormObject", new HREGFormObject());
+        model5.addAttribute("loginFormObject", new loginFormObject());
+        model6.addAttribute("RegisterFormObject", new REGFormObject());
+        model.addAttribute("errors", result.getAllErrors());
+        model8.addAttribute("scripttrial5", "null");
+            System.out.println("main register IF");
+
+            return "main";
+        }
         model4.addAttribute("loginFormObject", new loginFormObject());
         model1.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
@@ -74,7 +108,6 @@ public class DemoController {
             //model3.addAttribute("myText", "failed to login try again");
             model.addAttribute("scripttrial", "null");
             return "main";
-           
         }
     }
 
@@ -83,7 +116,6 @@ public class DemoController {
         model3.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
-        //System.out.println(trial.connection);
         boolean result=trial.validateLogin(formObject.getHomeusernameField(),formObject.getHomepasswordField());
         if(result==true){
         //model.addAttribute("myText", " Welcome " + DemoServicesIMPL.currentUser.getName() + " !");
@@ -101,15 +133,28 @@ public class DemoController {
             model.addAttribute( "homeinvalidtext", "invalid username or password");
             //model1.addAttribute("scripttrial1", "null");
             return "redirect:/main";
-           
         }
     }
     
     public class REGFormObject {
+
+        @Pattern(regexp = "[a-zA-Z]+", message = "Name must contain only alphabets") 
         private String regNameForm;
+        
+        @Email(message = "Please provide a valid email address")
         private String regEmailForm;
+
+        @Pattern(regexp = "\\d+", message = "Phone must contain atleast 11 digits")
         private String regPhoneForm;
+        
+        @Pattern(regexp = "[a-zA-Z0-9]+", message = "Username must contain only alphanumeric characters allowed")
         private String regUsernameForm;
+
+        @Size(min = 8, message = "Password must be at least 8 characters long")
+        @Pattern(
+        regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=]).*$",
+        message = "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character"
+        )
         private String regPasswordForm;
 
         public void setRegEmailForm(String regEmailForm) {
@@ -121,7 +166,7 @@ public class DemoController {
         public void setRegPasswordForm(String regPasswordForm) {
         //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         //this.regPasswordForm = encoder.encode(regPasswordForm);
-            this.regPasswordForm = regPasswordForm;
+        this.regPasswordForm = regPasswordForm;
         }
         public void setRegPhoneForm(String regPhoneForm) {
             this.regPhoneForm = regPhoneForm;
@@ -168,10 +213,24 @@ public class DemoController {
     }
 
     public class HREGFormObject {
+        @Pattern(regexp = "[a-zA-Z]+", message = "Name must contain only alphabets") 
         private String homeregNameForm;
+
+        @Email(message = "Please provide a valid email address")
         private String homeregEmailForm;
+
+        @Size(min = 11, message = "Phone must be at least 11 digits long")
+        @Pattern(regexp = "\\d+", message = "phone must contain only digits")
         private String homeregPhoneForm;
+
+        @Pattern(regexp = "[a-zA-Z0-9]+", message = " Username must contain only alphanumeric characters allowed")
         private String homeregUsernameForm;
+
+        @Size(min = 8, message = "Password must be at least 8 characters long")
+        @Pattern(
+        regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=]).*$",
+        message = "Password must contain at least one lowercase letter, one uppercase letter, one digit, and one special character"
+        )
         private String homeregPasswordForm;
 
         public void setHomeregEmailForm(String homeregEmailForm) {
@@ -181,7 +240,7 @@ public class DemoController {
             this.homeregNameForm = homeregNameForm;
         }
         public void setHomeregPasswordForm(String homeregPasswordForm) {
-          //  BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         //this.homeregPasswordForm = encoder.encode(homeregPasswordForm);
            this.homeregPasswordForm = homeregPasswordForm;
         }

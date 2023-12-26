@@ -1,10 +1,15 @@
 package com.example.demo;
 
+
 public class DemoUser {
     private String name;
+
     private String Email;
+
     private String phone;
+
     private String username;
+
     private String password;
 
     DemoUser(){
