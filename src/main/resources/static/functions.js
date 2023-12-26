@@ -1,5 +1,4 @@
 
-
 function searchImages() {
   // Get the input value
   var className = document.getElementById("search-input").value.toLowerCase();
@@ -24,10 +23,6 @@ function searchImages() {
       }
   }
 }
-
-
-
-
 // Accordion
 function myAccFunc(acc) {
   var x = document.getElementById(acc);
@@ -194,7 +189,9 @@ function drop(ev) {
   // Set a new ID for the cloned element (optional)
   var newId = "drag" + new Date().getTime();
   clonedElement.id = newId;
-
+  var currentZIndex = parseInt(window.getComputedStyle(originalElement).zIndex) || 1;
+  clonedElement.style.zIndex = currentZIndex + 1;
+clonedElement.style.position = "absolute";
   // Append the cloned element to the drop target
   ev.target.appendChild(clonedElement);
 
