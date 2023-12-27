@@ -1,3 +1,39 @@
+function removeOverlappingElements() {
+  // Get the elements to check for overlap
+  var elements = document.querySelectorAll('.pic2');
+  var divToRemoveOverlap = document.getElementById('trash');
+
+  // Get the bounds of the div to remove overlap
+  var divBounds = divToRemoveOverlap.getBoundingClientRect();
+
+  // Loop through each element and check for overlap
+  elements.forEach(function (element) {
+      var elementBounds = element.getBoundingClientRect();
+
+      // Check for overlap and remove the element if it overlaps
+      if (!(elementBounds.right < divBounds.left ||
+          elementBounds.left > divBounds.right ||
+          elementBounds.bottom < divBounds.top ||
+          elementBounds.top > divBounds.bottom)) {
+          element.remove();
+      }
+  });
+}
+
+
+function continuouslyRemoveOverlappingElements() {
+  // Define the interval (e.g., every 1000 milliseconds or 1 second)
+  var interval = 1000;
+
+  // Set up an interval to call removeOverlappingElements
+  setInterval(function() {
+      removeOverlappingElements();
+  }, interval);
+}
+
+// Call the function when the page loads
+window.onload = continuouslyRemoveOverlappingElements;
+
 
 function searchImages() {
   // Get the input value
@@ -23,19 +59,6 @@ function searchImages() {
       }
   }
 
-  $.ajax({
-    type: "POST",
-    url: "searchImages.php",
-    data: { query: className },
-    success: function(result) {
-        // Update the search results div with the response
-        $("#searchResults").html(result);
-    },
-    error: function(error) {
-        console.log("Error:", error);
-    }
-});
-
 }
 
 
@@ -49,8 +72,6 @@ function myAccFunc(acc) {
   }
 }
 
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
-document.getElementById("myBtn").click();
 
 // Open and close sidebar
 function w3_open() {
@@ -204,7 +225,9 @@ function drop(ev) {
 
   // Set a new ID for the cloned element (optional)
   var newId = "drag" + new Date().getTime();
+  var newClass= "pic2";
   clonedElement.id = newId;
+  clonedElement.className= newClass
   var currentZIndex = parseInt(window.getComputedStyle(originalElement).zIndex) || 1;
   clonedElement.style.zIndex = currentZIndex + 1;
 clonedElement.style.position = "absolute";
@@ -259,6 +282,35 @@ function downloadImage() {
       document.body.removeChild(link);
   });
 }
+// function downloadImage() {
+//   var divToConvert = document.getElementById('div1');
+//   var trashDiv = document.getElementById('trash');
+
+//   // Create a clone of the div with the elements to be captured
+//   var cloneDiv = divToConvert.cloneNode(true);
+
+//   // Remove the trash div from the cloned div
+//   var trashToRemove = cloneDiv.querySelector('#trash');
+//   if (trashToRemove) {
+//       trashToRemove.remove();
+//   }
+
+//   // Use html2canvas to convert the cloned div to an image
+//   html2canvas(cloneDiv).then(function (canvas) {
+//       // Convert canvas to image
+//       var image = new Image();
+//       image.src = canvas.toDataURL('image/png');
+
+//       // Create a link and trigger the download
+//       var link = document.createElement('a');
+//       link.href = image.src;
+//       link.download = 'myImage.png';
+//       document.body.appendChild(link);
+//       link.click();
+//       document.body.removeChild(link);
+//   });
+// }
+
 
 function handleImageUpload() {
   var input = document.getElementById('imageUpload');

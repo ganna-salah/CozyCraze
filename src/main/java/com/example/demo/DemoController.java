@@ -172,19 +172,6 @@ public class DemoController {
     }
 
 
-    // @GetMapping("/homecheck-username-availability")
-    // @ResponseBody
-    // public String homecheckUsernameAvailability(@RequestParam String username ,Model model1,Model model2,Model model3,Model model4,Model model5) {
-    //     model1.addAttribute("loginFormObject", new loginFormObject());
-    //     model2.addAttribute("RegisterFormObject", new REGFormObject());
-    //     model3.addAttribute("homeloginFormObject", new HloginFormObject());
-    //     model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
-    //     model5.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
-    //     DemoServicesIMPL trial=new DemoServicesIMPL();
-    //     boolean isAvailable = trial.checkUsernameAvailability(username);
-    //     return !isAvailable ? "taken" : "available";
-    // }
-
     public class REGFormObject {
 
         @Pattern(regexp = "[a-zA-Z]+", message = "Name must contain only alphabets") 

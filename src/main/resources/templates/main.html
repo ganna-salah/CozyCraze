@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/draggabilly/2.3.0/draggabilly.pkgd.min.js"
     integrity="sha512-wrqGZ9AlrZss+bvssqlLBHyZISI7FVl0JoBDZ4frb4Udgj1IDcip4ausWVzf80m52bdDv5sihhtBsjZgraoQhQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -411,6 +412,13 @@
             min-width: inherit !important;
             max-height: inherit !important;
           " />
+
+<div id="trash" style="z-index:3;" >
+  <span class="trash" >
+  <span></span>
+  <i></i>
+</span>
+</div>
       <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="
           position: absolute; 
           z-index: 2; 
@@ -422,12 +430,7 @@
           margin-bottom: 20px;
           /* border: 2px solid !important; */
         ">
-        <div id="trash" style="z-index:2;"  ondrop="droptrash(event)" ondragover="allowDrop(event)">
-          <span class="trash" >
-          <span></span>
-          <i></i>
-        </span>
-      </div>
+        
 
 
 
