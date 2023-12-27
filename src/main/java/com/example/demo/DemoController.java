@@ -145,7 +145,7 @@ public class DemoController {
     }
 
     @PostMapping("/deleteForm")
-    public String delete(DeleteUserFormObject object,Model model,Model model2,Model model1,Model model3){
+    public String deleteUser(DeleteUserFormObject object,Model model,Model model2,Model model1,Model model3){
         model1.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
         model3.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
