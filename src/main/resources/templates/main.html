@@ -274,7 +274,7 @@
 
       <a href="#" class="w3-bar-item button w3-padding"
         onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
-<!-- 
+      <!-- 
       <a href="#" class="w3-bar-item button w3-padding"
         onclick="document.getElementById('success').style.display='block'"></a> -->
 
@@ -480,7 +480,7 @@
             document.getElementById('sidelogoutbtn').style.display = 'inline-block';
             document.getElementById('SidebtndeleteUser').style.display = 'inline-block';
           </script>
-          
+
         </form>
       </div>
     </div>
@@ -520,9 +520,11 @@
           <div th:if="${#fields.hasErrors('regUsernameForm')}" class="error">
             <p th:errors="*{regUsernameForm}"></p>
           </div>
+          <span id="usernameStatus"></span>
           <input value="name" class="input w3-border" type="password" placeholder="Enter password"
             th:field="*{regPasswordForm}" required />
-          <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
+          
+            <button value="name" id="registerbtn" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
           <div th:if="${#fields.hasErrors('regPasswordForm')}" class="error">
             <p th:errors="*{regPasswordForm}"></p>
           </div>
@@ -540,6 +542,28 @@
             document.getElementById('sidelogoutbtn').style.display = 'inline-block';
           </script>
         </form>
+        <script>
+          $(document).ready(function() {
+              $('#regUsernameForm').on('input', function() {
+                  var username = $(this).val();
+                  if (username.trim() !== '') {
+                      $.get('/check-username-availability', { username: username }, function(response) {
+                          if (response === 'taken') {
+                              $('#usernameStatus').text('Username is already taken');
+                              document.getElementById("registerbtn").disabled=true;
+                              $('#registrationForm').attr('onsubmit', 'return false;');
+                          } else {
+                              $('#usernameStatus').text('');
+                              document.getElementById("registerbtn").disabled=false;
+                              $('#registrationForm').removeAttr('onsubmit');
+                          }
+                      });
+                  } else {
+                      $('#usernameStatus').text('');
+                  }
+              });
+          });
+      </script>
       </div>
     </div>
   </div>
@@ -552,15 +576,16 @@
         <i onclick="document.getElementById('deleteUser').style.display='none'"
           class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
         <h2 class="wide">Delete User</h2>
-        
+
         <form id="deleteUserMain" th:action="@{/deleteForm}" method="post" th:object="${deleteUserFormObject}">
-          <input class="input w3-border" type="text" placeholder="Enter User's username you want to delete" th:field="*{deleteUsernameField}" />
-        <br>
-        <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom"
-          onclick="document.getElementById('deleteUser').style.display='none'">
-          Delete
-        </button>
-      </form>
+          <input class="input w3-border" type="text" placeholder="Enter User's username you want to delete"
+            th:field="*{deleteUsernameField}" />
+          <br>
+          <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom"
+            onclick="document.getElementById('deleteUser').style.display='none'">
+            Delete
+          </button>
+        </form>
       </div>
     </div>
   </div>

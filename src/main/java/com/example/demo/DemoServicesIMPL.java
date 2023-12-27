@@ -83,7 +83,6 @@ public static DemoUser currentUser;
         int id=0;
         System.out.println(username);
         Statement mystate = connection.createStatement();
-        //Statement mystate2 = connection.createStatement();
         ResultSet resultSet = mystate.executeQuery("select C_id from tbl_customer where C_username = \"" + username +"\"");
         while(resultSet.next()){
                 id=Integer.parseInt(resultSet.getString("C_id"));
@@ -102,5 +101,23 @@ public static DemoUser currentUser;
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    public boolean checkUsernameAvailability(String username) {
+        try{
+        Statement mystate = connection.createStatement();
+        ResultSet resultSet = mystate.executeQuery("select C_username from tbl_customer");
+            while (resultSet.next()){
+                if(resultSet.getString("C_username").equals(username)){
+                    return false;
+                }                
+            }    
+    }
+        catch(Exception e){
+            System.out.println(e);
+        }
+     return true;
     }
 }
