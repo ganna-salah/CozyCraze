@@ -28,7 +28,7 @@ public static DemoUser currentUser;
 
 
 @Override
-    public boolean validateLogin(String username, String password) {
+    public int validateLogin(String username, String password) {
         try {
             Statement mystate = connection.createStatement();
             ResultSet resultSet = mystate.executeQuery("select * from tbl_customer");
@@ -41,13 +41,18 @@ public static DemoUser currentUser;
                     // currentUser.setEmail(resultSet.getString("C_Email"));
                     // currentUser.setPhone(resultSet.getString("C_phone"));
                     // currentUser.setUsername(resultSet.getString("C_Username"));
-                    return true;
+                    boolean checkAdmin=validateAdmin(resultSet.getString("C_id"));
+                    System.out.println(checkAdmin);
+                    if (checkAdmin) {
+                        return 2;
+                    }
+                    return 1;
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+        return 0;
     }
 
     @Override
@@ -88,5 +93,14 @@ public static DemoUser currentUser;
         catch(Exception e){
             System.out.println(e);
         }
+    }
+
+
+    @Override
+    public boolean validateAdmin(String id) {
+        if(id.equals("3")){
+            return true;
+        }
+        return false;
     }
 }

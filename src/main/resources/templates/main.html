@@ -16,10 +16,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/draggabilly/2.3.0/draggabilly.pkgd.min.js"
     integrity="sha512-wrqGZ9AlrZss+bvssqlLBHyZISI7FVl0JoBDZ4frb4Udgj1IDcip4ausWVzf80m52bdDv5sihhtBsjZgraoQhQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/interactjs"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/interactjs"></script>
 
 
   <style>
@@ -201,22 +201,24 @@
       </a>
       <div id="StickersAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
 
-        <div id="search-container" >
-          <input oninput="searchImages()" type="text" id="search-input" class="search-input" placeholder="Search..." style="width: 213px;margin-bottom: 10px;">
+        <div id="search-container">
+          <input oninput="searchImages()" type="text" id="search-input" class="search-input" placeholder="Search..."
+            style="width: 213px;margin-bottom: 10px;">
           <button id="search-button" onclick="searchImages()">Search</button>
         </div>
 
-        <div id="stikcer-container" style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content !important;display: flex;flex-wrap: wrap;">
+        <div id="stikcer-container"
+          style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content !important;display: flex;flex-wrap: wrap;">
 
           <img id="drag1" class="pic whales dolphins" src="stickers/whale1.png" style="width: 80px"
             ondragstart="drag(event)" />
-          <img id="drag2" class="pic whales dolphins"  src="stickers/whale3.png" style="width: 80px;"
+          <img id="drag2" class="pic whales dolphins" src="stickers/whale3.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag3"class="pic milk peach box"  src="stickers/peach milk.png" style="width: 80px;" 
-          ondragstart="drag(event)">
+          <img id="drag3" class="pic milk peach box" src="stickers/peach milk.png" style="width: 80px;"
+            ondragstart="drag(event)">
           <img id="drag4" class="pic naruto itachi animes" src="stickers/itachi.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag5"class="pic formula1 cars ferrari"  src="stickers/formula1.png" style="width: 80px;"
+          <img id="drag5" class="pic formula1 cars ferrari" src="stickers/formula1.png" style="width: 80px;"
             ondragstart="drag(event)">
           <img id="drag6" class="pic formula1 cars ferrari" src="stickers/formula2.png" style="width: 80px;"
             ondragstart="drag(event)">
@@ -224,26 +226,22 @@
             ondragstart="drag(event)">
           <img id="drag8" class="pic naruto animes" src="stickers/naruto.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag9" class="pic whales" src="stickers/whale4.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag10" class="pic whales" src="stickers/whale5.png" style="width: 80px;"
-            ondragstart="drag(event)">
+          <img id="drag9" class="pic whales" src="stickers/whale4.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag10" class="pic whales" src="stickers/whale5.png" style="width: 80px;" ondragstart="drag(event)">
           <img id="drag11" class="pic naruto animes" src="stickers/naruto2.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag11" class="pic books" src="stickers/book.png" style="width: 80px;"
-            ondragstart="drag(event)">
-          <img id="drag12"class="pic whales"  src="stickers/whale2.png" style="width: 80px;"
-            ondragstart="drag(event)">
+          <img id="drag11" class="pic books" src="stickers/book.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag12" class="pic whales" src="stickers/whale2.png" style="width: 80px;" ondragstart="drag(event)">
           <img id="drag13" class=" pic naruto animes" src="stickers/naruto3.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag14" class="pic captions quotes words sentences " src="stickers/caption 1.png" style="width: 80px;"
-            ondragstart="drag(event)">
+          <img id="drag14" class="pic captions quotes words sentences " src="stickers/caption 1.png"
+            style="width: 80px;" ondragstart="drag(event)">
           <img id="drag15" class="pic captions quotes words sentences" src="stickers/caption2.png" style="width: 80px;"
             ondragstart="drag(event)">
-            <img id="drag16" class="pic dr best favourite " src="stickers/DR Mohamed Eltawil.png" style="height: 80px; width:80px"
-            ondragstart="drag(event)">
-            <img id="drag17" class="pic food junk fries mcdonalds " src="stickers/fries.png" style="height: 80px; width:80px"
-            ondragstart="drag(event)">
+          <img id="drag16" class="pic dr best favourite " src="stickers/DR Mohamed Eltawil.png"
+            style="height: 80px; width:80px" ondragstart="drag(event)">
+          <img id="drag17" class="pic food junk fries mcdonalds " src="stickers/fries.png"
+            style="height: 80px; width:80px" ondragstart="drag(event)">
         </div>
 
 
@@ -264,16 +262,21 @@
         onclick="document.getElementById('login').style.display='block'">Login</a>
 
       <a style="display: none;" id="sidelogoutbtn" href="javascript:void(0)" class="w3-bar-item button w3-padding"
-      onclick="document.getElementById('sideloginbtn').style.display='inline-block';
+        onclick="document.getElementById('sideloginbtn').style.display='inline-block';
       document.getElementById('sideregisterbtn').style.display='inline-block';
+      document.getElementById('SidebtndeleteUser').style.display='none';
       document.getElementById('sidelogoutbtn').style.display='none'; 
       document.getElementById('welcomeText').style.display='none'">Logout</a>
 
-      <a href="#" class="w3-bar-item button w3-padding"
-        onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+
+      <a style="display: none;" id="SidebtndeleteUser" href="javascript:void(0)" class="w3-bar-item button w3-padding"
+        onclick="document.getElementById('deleteUser').style.display='inline-block'"> Delete User</a>
 
       <a href="#" class="w3-bar-item button w3-padding"
-        onclick="document.getElementById('success').style.display='block'"></a>
+        onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
+<!-- 
+      <a href="#" class="w3-bar-item button w3-padding"
+        onclick="document.getElementById('success').style.display='block'"></a> -->
 
   </nav>
 
@@ -322,7 +325,7 @@
             min-width: inherit !important;
             max-height: inherit !important;
           " />
-          <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="
+      <div id="div3" ondrop="drop(event)" ondragover="allowDrop(event)" style="
           position: absolute; 
           z-index: 2; 
           max-height: 400px;
@@ -333,12 +336,13 @@
           margin-bottom: 20px;
           /* border: 2px solid !important; */
         ">
-    
-    
-    
-        </div>
+
+
+
+      </div>
     </div>
-    <button class="button w3-black w3-margin-bottom w3-margin-top" onclick="removeContent()">Remove all stickers</button>
+    <button class="button w3-black w3-margin-bottom w3-margin-top" onclick="removeContent()">Remove all
+      stickers</button>
     <button class="button w3-black w3-margin-bottom w3-margin-top" onclick="downloadImage()"> Save </button>
     <!-- Subscribe section -->
     <div class="container w3-black w3-padding-32">
@@ -417,6 +421,9 @@
 
 
     <!-- End page content -->
+
+
+
   </div>
   <!-- 
   Newsletter Modal -->
@@ -432,7 +439,6 @@
         </p>
         <p>
           <input class="input w3-border" type="text" placeholder="Enter e-mail" />
-
         </p>
         <button type="button" class="button w3-padding-large w3-red w3-margin-bottom"
           onclick="document.getElementById('newsletter').style.display='none'">
@@ -443,29 +449,14 @@
   </div>
 
 
-  <!-- Welcome Modal 
-  <div id="success" class="w3-modal">
-    <div class="w3-modal-content w3-animate-zoom" style="padding: 32px">
-      <div class="container w3-center">
-        <i onclick="document.getElementById('success').style.display='none'"
-          class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
-        <h2 class="wide">WELCOME</h2>
-
-      </div>
-    </div>
-  </div> -->
-
-
 
   <!--  login modal-->
-
   <div id="login" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom">
       <div class="container w3-center">
         <i onclick="document.getElementById('login').style.display='none'"
           class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
         <h2 class="wide">Login</h2>
-
         <form id="mainpageloginform" th:action="@{/LoginForm}" method="post" th:object="${loginFormObject}">
           <input class="input w3-border" type="text" placeholder="Enter Username" th:field="*{usernameField}"
             required />
@@ -478,96 +469,102 @@
           <script th:if="${scripttrial}">
             document.getElementById('login').style.display = 'block';
           </script>
-          <script th:if="${scripttrial2}">
+          <script th:if="${scripttrial2}"> // successful login for user
             document.getElementById('sideloginbtn').style.display = 'none';
             document.getElementById('sideregisterbtn').style.display = 'none';
-            document.getElementById('sidelogoutbtn').style.display= 'inline-block';
+            document.getElementById('sidelogoutbtn').style.display = 'inline-block';
           </script>
+          <script th:if="${scripttrial4}"> // successful login for admin
+            document.getElementById('sideloginbtn').style.display = 'none';
+            document.getElementById('sideregisterbtn').style.display = 'none';
+            document.getElementById('sidelogoutbtn').style.display = 'inline-block';
+            document.getElementById('SidebtndeleteUser').style.display = 'inline-block';
+          </script>
+          
         </form>
-
       </div>
     </div>
   </div>
 
-  <!-- Register Modal -->
 
+
+  <!-- Register Modal -->
   <div id="Register" class="w3-modal">
     <div class="w3-modal-content w3-animate-zoom">
       <div class="container w3-center">
         <i onclick="document.getElementById('Register').style.display='none'"
           class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
         <h2 class="wide">Register</h2>
-
-
         <form th:action="@{/RegisterForm}" method="post" th:object="${RegisterFormObject}">
           <input value="name" class="input w3-border" type="text" placeholder="Enter Name" th:field="*{regNameForm}"
             required />
           <br>
-
-           <div th:if="${#fields.hasErrors('regNameForm')}" class="error">
+          <div th:if="${#fields.hasErrors('regNameForm')}" class="error">
             <p th:errors="*{regNameForm}"></p>
-        </div> 
-
-
+          </div>
           <input value="name" class="input w3-border" type="text" placeholder="Enter Email" required
             th:field="*{regEmailForm}" />
           <br>
-
           <div th:if="${#fields.hasErrors('regEmailForm')}" class="error">
             <p th:errors="*{regEmailForm}"></p>
-        </div>
-
-
+          </div>
           <input value="name" class="input w3-border" type="text" placeholder="Enter Phone" th:field="*{regPhoneForm}"
             required />
           <br>
-
-           <div th:if="${#fields.hasErrors('regPhoneForm')}" class="error">
+          <div th:if="${#fields.hasErrors('regPhoneForm')}" class="error">
             <p th:errors="*{regPhoneForm}"></p>
-        </div> 
-
-
-
-    
-
+          </div>
           <input value="name" class="input w3-border" type="text" placeholder="Enter username"
             th:field="*{regUsernameForm}" required />
           <br>
-
-           <div th:if="${#fields.hasErrors('regUsernameForm')}" class="error">
+          <div th:if="${#fields.hasErrors('regUsernameForm')}" class="error">
             <p th:errors="*{regUsernameForm}"></p>
-        </div> 
-
-
-
+          </div>
           <input value="name" class="input w3-border" type="password" placeholder="Enter password"
             th:field="*{regPasswordForm}" required />
-            <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
-            
-
-            <div th:if="${#fields.hasErrors('regPasswordForm')}" class="error">
-              <p th:errors="*{regPasswordForm}"></p>
-          </div> 
-
-            <div th:if="${errors}">
-              <p th:each="error : ${errors}">
-                  <span th:text="${error.defaultMessage}"></span>
+          <button value="name" type="submit" class="button w3-padding-large w3-red w3-margin-bottom">Register</button>
+          <div th:if="${#fields.hasErrors('regPasswordForm')}" class="error">
+            <p th:errors="*{regPasswordForm}"></p>
+          </div>
+          <div th:if="${errors}">
+            <p th:each="error : ${errors}">
+              <span th:text="${error.defaultMessage}"></span>
             </p>
-        </div>
-
-
-            <script th:if="${scripttrial5}">
-              document.getElementById('Register').style.display = 'block';
-            </script>
-            <script th:if="${scripttrial3}">
-              document.getElementById('sideloginbtn').style.display = 'none';
-              document.getElementById('sideregisterbtn').style.display = 'none';
-              document.getElementById('sidelogoutbtn').style.display= 'inline-block';
-            </script>
-          </form>
+          </div>
+          <script th:if="${scripttrial5}"> //invalid register
+            document.getElementById('Register').style.display = 'block';
+          </script>
+          <script th:if="${scripttrial3}"> //when successful register
+            document.getElementById('sideloginbtn').style.display = 'none';
+            document.getElementById('sideregisterbtn').style.display = 'none';
+            document.getElementById('sidelogoutbtn').style.display = 'inline-block';
+          </script>
+        </form>
       </div>
     </div>
   </div>
+
+
+  <!-- Delete user Modal -->
+  <div id="deleteUser" class="w3-modal">
+    <div class="w3-modal-content w3-animate-zoom" style="padding: 32px">
+      <div class="container w3-center">
+        <i onclick="document.getElementById('deleteUser').style.display='none'"
+          class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
+        <h2 class="wide">Delete User</h2>
+        
+        <form id="deleteUserMain" th:action="@{/deleteForm}" method="post" th:object="${deleteUserFormObject}">
+          <input class="input w3-border" type="text" placeholder="Enter User's username you want to delete" th:field="*{deleteUsernameField}" />
+        <br>
+        <button type="submit" class="button w3-padding-large w3-red w3-margin-bottom"
+          onclick="document.getElementById('deleteUser').style.display='none'">
+          Delete
+        </button>
+      </form>
+      </div>
+    </div>
+  </div>
+
 
 
 </body>

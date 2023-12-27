@@ -28,25 +28,25 @@ public class DemoController {
 
 
     @GetMapping("/navigateToMain")
-    public String navigateToMain(Model model1,Model model2){
+    public String navigateToMain(Model model1,Model model2,Model model3){
         model1.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
+        model3.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
         return "main";
     }
 
-
-
     @GetMapping("/main")
-    public String showForm(Model model1,Model model2,Model model3,Model model4) {
+    public String showForm(Model model1,Model model2,Model model3,Model model4,Model model5) {
         model1.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
         model3.addAttribute("homeloginFormObject", new HloginFormObject());
         model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
+        model5.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
         return "home";
     }
 
     @PostMapping("/homeRegisterForm")
-    public String homeRegister(@Valid @ModelAttribute HREGFormObject formObject,BindingResult result ,Model model,Model model3,Model model4,Model model5,Model model6,Model model8){
+    public String homeRegister(@Valid @ModelAttribute HREGFormObject formObject,BindingResult result ,Model model,Model model3,Model model4,Model model5,Model model6,Model model8,Model model2){
         if (result.hasErrors()) {
         model3.addAttribute("homeloginFormObject", new HloginFormObject());
         model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
@@ -56,18 +56,19 @@ public class DemoController {
         model8.addAttribute("scripttrial6", "null");
             return "home";
         }
+        model2.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
         model3.addAttribute("homeloginFormObject", new HloginFormObject());
         model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
         model5.addAttribute("loginFormObject", new loginFormObject());
         model6.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
         trial.registerUser(formObject.getHomeregNameForm(),formObject.getHomeregEmailForm(),formObject.getHomeregPhoneForm(),formObject.getHomeregUsernameForm(),formObject.getHomeregPasswordForm());        
-        // model.addAttribute("null", trial);
+        //model.addAttribute("null", trial);
         return "main";
     }
 
     @PostMapping("/RegisterForm")
-    public String submitForm(@Valid @ModelAttribute REGFormObject yourFormObject,BindingResult result,Model model,Model model2,Model model1,Model model4,Model model3,Model model7,Model model5,Model model6,Model model8) {
+    public String submitForm(@Valid @ModelAttribute REGFormObject yourFormObject,BindingResult result,Model model,Model model2,Model model1,Model model4,Model model3,Model model7,Model model5,Model model6,Model model8,Model model9) {
         if (result.hasErrors()) {
             
          model3.addAttribute("homeloginFormObject", new HloginFormObject());
@@ -79,6 +80,8 @@ public class DemoController {
 
             return "main";
         }
+        
+        model9.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
         model4.addAttribute("loginFormObject", new loginFormObject());
         model1.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
@@ -89,54 +92,69 @@ public class DemoController {
     }
 
     @PostMapping("/LoginForm")
-    public String submitForm(loginFormObject yourFormObject,Model model3,Model model ,Model model1,Model model4) {
-
+    public String submitForm(loginFormObject yourFormObject,Model model3,Model model ,Model model1,Model model4,Model model5,Model model2,Model model6) {
+        
+        model5.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
         model4.addAttribute("loginFormObject", new loginFormObject());
         model1.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
 
-
-        boolean result=trial.validateLogin(yourFormObject.getUsernameField(),yourFormObject.getPasswordField());
-        if(result==true){
-            trial.deleteUser("gannasalah1");
-
-            model3.addAttribute("myText", " Welcome !");// + DemoServicesIMPL.currentUser.getName() + " !");
+        int result=trial.validateLogin(yourFormObject.getUsernameField(),yourFormObject.getPasswordField());
+        if(result==1){
+            model3.addAttribute("myText", " Welcome !");
             model.addAttribute("scripttrial2", "null");
+            return "main";
+        }
+        else if(result==2){
+            System.out.println("result 2 entered");
+            model2.addAttribute("myText", " Welcome !");
+            model6.addAttribute("scripttrial4", "null");
             return "main";
         }
         else{
             model3.addAttribute( "invalidtext", "invalid username or password");
-            //model3.addAttribute("myText", "failed to login try again");
             model.addAttribute("scripttrial", "null");
             return "main";
         }
     }
 
     @PostMapping("/homeLoginForm")
-    public String homeLogin(HloginFormObject formObject,Model model,Model model1, Model model3,Model model2  ) {
+    public String homeLogin(HloginFormObject formObject,Model model,Model model1, Model model3,Model model2 ,Model model5,Model model4,Model model6 ) {
+        model5.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
         model3.addAttribute("loginFormObject", new loginFormObject());
         model2.addAttribute("RegisterFormObject", new REGFormObject());
+        model6.addAttribute("homeloginFormObject", new HloginFormObject());
+        model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
-        boolean result=trial.validateLogin(formObject.getHomeusernameField(),formObject.getHomepasswordField());
-        if(result==true){
-        //model.addAttribute("myText", " Welcome " + DemoServicesIMPL.currentUser.getName() + " !");
-        model.addAttribute("myText", " Welcome !");// + DemoServicesIMPL.currentUser.getName() + " !");
+        int result=trial.validateLogin(formObject.getHomeusernameField(),formObject.getHomepasswordField());
+        if(result==1){
+        model.addAttribute("myText", " Welcome !");
         model.addAttribute("scripttrial2", "null");
-        
-        // loginFormObject l= new loginFormObject();
-        // l.setUsernameField(formObject.getHomeusernameField());
-        // l.setPasswordField(formObject.getHomepasswordField());
-        // model3.addAttribute("loginFormObject", l);
-        // model2.addAttribute("RegisterFormObject", new REGFormObject());
             return "main";
+        }
+        else if(result == 2){
+        model3.addAttribute("myText", " Welcome !");
+        model.addAttribute("scripttrial4", "null");
+        return"main";
         }
         else{
             model.addAttribute( "homeinvalidtext", "invalid username or password");
-            //model1.addAttribute("scripttrial1", "null");
-            return "redirect:/main";
+            model.addAttribute("scripttrial1", "null");
+            return "home";
         }
     }
-    
+
+    @PostMapping("/deleteForm")
+    public String delete(DeleteUserFormObject object,Model model,Model model2,Model model1,Model model3){
+        model1.addAttribute("loginFormObject", new loginFormObject());
+        model2.addAttribute("RegisterFormObject", new REGFormObject());
+        model3.addAttribute("deleteUserFormObject",new DeleteUserFormObject());
+        DemoServicesIMPL trial=new DemoServicesIMPL();
+        trial.deleteUser(object.getDeleteUsernameField());
+        model.addAttribute("scripttrial4", "null");
+        return "main";
+    } 
+
     public class REGFormObject {
 
         @Pattern(regexp = "[a-zA-Z]+", message = "Name must contain only alphabets") 
@@ -285,6 +303,20 @@ public class DemoController {
         public String getHomeusernameField() {
             return homeusernameField;
         }
+
+    }
+
+    public class DeleteUserFormObject{
+
+        private String deleteUsernameField;
+
+        public void setDeleteUsernameField(String deleteUsernameField) {
+            this.deleteUsernameField = deleteUsernameField;
+        }
+        public String getDeleteUsernameField() {
+            return deleteUsernameField;
+        }
+
 
     }
 }
