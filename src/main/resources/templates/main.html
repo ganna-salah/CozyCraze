@@ -6,6 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="functions.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <link rel="stylesheet" href="mainpage.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
@@ -201,7 +202,7 @@
       <div id="StickersAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
 
         <div id="search-container" >
-          <input type="text" id="search-input" class="search-input" placeholder="Search..." style="width: 213px;margin-bottom: 10px;">
+          <input oninput="searchImages()" type="text" id="search-input" class="search-input" placeholder="Search..." style="width: 213px;margin-bottom: 10px;">
           <button id="search-button" onclick="searchImages()">Search</button>
         </div>
 

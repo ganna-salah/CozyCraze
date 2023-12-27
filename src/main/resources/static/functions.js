@@ -22,7 +22,23 @@ function searchImages() {
           
       }
   }
+
+  $.ajax({
+    type: "POST",
+    url: "searchImages.php",
+    data: { query: className },
+    success: function(result) {
+        // Update the search results div with the response
+        $("#searchResults").html(result);
+    },
+    error: function(error) {
+        console.log("Error:", error);
+    }
+});
+
 }
+
+
 // Accordion
 function myAccFunc(acc) {
   var x = document.getElementById(acc);

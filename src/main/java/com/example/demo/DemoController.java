@@ -11,13 +11,15 @@ import javax.validation.constraints.Size;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+//import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestBody;
 //import org.springframework.web.bind.annotation.RequestBody;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 //@Validated
@@ -33,6 +35,7 @@ public class DemoController {
     }
 
 
+
     @GetMapping("/main")
     public String showForm(Model model1,Model model2,Model model3,Model model4) {
         model1.addAttribute("loginFormObject", new loginFormObject());
@@ -44,15 +47,13 @@ public class DemoController {
 
     @PostMapping("/homeRegisterForm")
     public String homeRegister(@Valid @ModelAttribute HREGFormObject formObject,BindingResult result ,Model model,Model model3,Model model4,Model model5,Model model6,Model model8){
-        System.out.println("entered homeRegister");
         if (result.hasErrors()) {
-        System.out.println("entered IF");
-         model3.addAttribute("homeloginFormObject", new HloginFormObject());
-         model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
+        model3.addAttribute("homeloginFormObject", new HloginFormObject());
+        model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
         model5.addAttribute("loginFormObject", new loginFormObject());
         model6.addAttribute("RegisterFormObject", new REGFormObject());
         model.addAttribute("errors", result.getAllErrors());
-                model8.addAttribute("scripttrial6", "null");
+        model8.addAttribute("scripttrial6", "null");
             return "home";
         }
         model3.addAttribute("homeloginFormObject", new HloginFormObject());
@@ -62,13 +63,11 @@ public class DemoController {
         DemoServicesIMPL trial=new DemoServicesIMPL();
         trial.registerUser(formObject.getHomeregNameForm(),formObject.getHomeregEmailForm(),formObject.getHomeregPhoneForm(),formObject.getHomeregUsernameForm(),formObject.getHomeregPasswordForm());        
         // model.addAttribute("null", trial);
-        System.out.println("register done");
         return "main";
     }
 
     @PostMapping("/RegisterForm")
     public String submitForm(@Valid @ModelAttribute REGFormObject yourFormObject,BindingResult result,Model model,Model model2,Model model1,Model model4,Model model3,Model model7,Model model5,Model model6,Model model8) {
-        System.out.println("entered mainRegister");
         if (result.hasErrors()) {
             
          model3.addAttribute("homeloginFormObject", new HloginFormObject());
@@ -77,7 +76,6 @@ public class DemoController {
         model6.addAttribute("RegisterFormObject", new REGFormObject());
         model.addAttribute("errors", result.getAllErrors());
         model8.addAttribute("scripttrial5", "null");
-            System.out.println("main register IF");
 
             return "main";
         }
@@ -97,8 +95,11 @@ public class DemoController {
         model1.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
 
+
         boolean result=trial.validateLogin(yourFormObject.getUsernameField(),yourFormObject.getPasswordField());
         if(result==true){
+            trial.deleteUser("gannasalah1");
+
             model3.addAttribute("myText", " Welcome !");// + DemoServicesIMPL.currentUser.getName() + " !");
             model.addAttribute("scripttrial2", "null");
             return "main";
