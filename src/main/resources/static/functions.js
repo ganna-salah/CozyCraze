@@ -266,6 +266,7 @@ function removeContent() {
   }
 }
 function downloadImage() {
+  document.getElementById("trash").style.display="none";
   var divToConvert = document.getElementById('div1');
 
   html2canvas(divToConvert).then(function(canvas) {
@@ -280,6 +281,7 @@ function downloadImage() {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      document.getElementById("trash").style.display="block";
   });
 }
 // function downloadImage() {
