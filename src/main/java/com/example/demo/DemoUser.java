@@ -1,6 +1,5 @@
 package com.example.demo;
 
-
 public class DemoUser {
     private String name;
 

@@ -1,13 +1,9 @@
 package com.example.demo;
 
-// java.lang.ProcessBuilder.Redirect;
-
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
-//import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 
 
 @Controller
@@ -59,7 +54,6 @@ public class DemoController {
         model6.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
         trial.registerUser(formObject.getHomeregNameForm(),formObject.getHomeregEmailForm(),formObject.getHomeregPhoneForm(),formObject.getHomeregUsernameForm(),formObject.getHomeregPasswordForm());        
-        //model.addAttribute("null", trial);
         return "main";
     }
 
@@ -83,7 +77,7 @@ public class DemoController {
 
         DemoServicesIMPL trial=new DemoServicesIMPL();
         trial.registerUser(yourFormObject.getRegNameForm(),yourFormObject.getRegEmailForm(),yourFormObject.getRegPhoneForm(),yourFormObject.getRegUsernameForm(),yourFormObject.getRegPasswordForm());
-        model2.addAttribute("myText", " Welcome !");// + DemoServicesIMPL.currentUser.getName() + " !");
+        model2.addAttribute("myText", " Welcome !");
         model.addAttribute("scripttrial3", "null");
         return "main";
     }
@@ -174,10 +168,11 @@ public class DemoController {
         @Email(message = "Please provide a valid email address")
         private String regEmailForm;
 
+        @Size(min=11,message="must contain 11 digits")
         @Pattern(regexp = "\\d+", message = "Phone must contain atleast 11 digits")
         private String regPhoneForm;
         
-        @Pattern(regexp = "[a-zA-Z0-9]+", message = "Username must contain only alphanumeric characters allowed")
+        @Pattern(regexp = "[a-zA-Z0-9]+", message = "Username must contain only alphanumeric characters")
         private String regUsernameForm;
 
         @Size(min = 8, message = "Password must be at least 8 characters long")
@@ -194,8 +189,6 @@ public class DemoController {
             this.regNameForm = regNameForm;
         }
         public void setRegPasswordForm(String regPasswordForm) {
-        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        //this.regPasswordForm = encoder.encode(regPasswordForm);
         this.regPasswordForm = regPasswordForm;
         }
         public void setRegPhoneForm(String regPhoneForm) {
