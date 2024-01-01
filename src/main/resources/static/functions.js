@@ -1,4 +1,4 @@
-function removeOverlappingElements() {
+function removeStickers() {
   // Get the elements to check for overlap
   var elements = document.querySelectorAll('.pic2');
   var divToRemoveOverlap = document.getElementById('trash');
@@ -20,26 +20,25 @@ function removeOverlappingElements() {
   });
 }
 
-
-function continuouslyRemoveOverlappingElements() {
+function continuouslyRemoveStickers() {
   // Define the interval (e.g., every 1000 milliseconds or 1 second)
   var interval = 1000;
 
   // Set up an interval to call removeOverlappingElements
   setInterval(function() {
-      removeOverlappingElements();
+    removeStickers();
   }, interval);
 }
 
 // Call the function when the page loads
-window.onload = continuouslyRemoveOverlappingElements;
+window.onload = continuouslyRemoveStickers;
 
 
 function searchImages() {
   // Get the input value
   var className = document.getElementById("search-input").value.toLowerCase();
 
-  // Get all images with class "img"
+  // Get all images with class "pic"
   var images = document.getElementById("stikcer-container").getElementsByClassName("pic");
 
   // Hide all images
@@ -61,7 +60,6 @@ function searchImages() {
 
 }
 
-
 // Accordion
 function myAccFunc(acc) {
   var x = document.getElementById(acc);
@@ -71,7 +69,6 @@ function myAccFunc(acc) {
     x.className = x.className.replace(" w3-show", "");
   }
 }
-
 
 // Open and close sidebar
 function w3_open() {
@@ -228,10 +225,8 @@ function drop(ev) {
   var newClass= "pic2";
   clonedElement.id = newId;
   clonedElement.className= newClass
-  var currentZIndex = parseInt(window.getComputedStyle(originalElement).zIndex) || 1;
-  clonedElement.style.zIndex = currentZIndex + 1;
-clonedElement.style.position = "absolute";
-  // Append the cloned element to the drop target
+  clonedElement.style.position = "absolute";
+  // Append the cloned element to the drop target "div3"
   ev.target.appendChild(clonedElement);
 
   // Make the cloned element draggable within the div
@@ -240,15 +235,6 @@ clonedElement.style.position = "absolute";
   });
   makeResizableAndDraggable('#' + newId);
 }
-// function removeContent() {
-//   // Get the reference to the div
-//   var myDiv = document.getElementById("div3");
-
-//   // Remove all child nodes (content) from the div
-//   while (myDiv.firstChild) {
-//     myDiv.removeChild(myDiv.firstChild);
-//   }
-// }
 
 function removeContent() {
   // Get the reference to the div
@@ -284,34 +270,7 @@ function downloadImage() {
       document.getElementById("trash").style.display="block";
   });
 }
-// function downloadImage() {
-//   var divToConvert = document.getElementById('div1');
-//   var trashDiv = document.getElementById('trash');
 
-//   // Create a clone of the div with the elements to be captured
-//   var cloneDiv = divToConvert.cloneNode(true);
-
-//   // Remove the trash div from the cloned div
-//   var trashToRemove = cloneDiv.querySelector('#trash');
-//   if (trashToRemove) {
-//       trashToRemove.remove();
-//   }
-
-//   // Use html2canvas to convert the cloned div to an image
-//   html2canvas(cloneDiv).then(function (canvas) {
-//       // Convert canvas to image
-//       var image = new Image();
-//       image.src = canvas.toDataURL('image/png');
-
-//       // Create a link and trigger the download
-//       var link = document.createElement('a');
-//       link.href = image.src;
-//       link.download = 'myImage.png';
-//       document.body.appendChild(link);
-//       link.click();
-//       document.body.removeChild(link);
-//   });
-// }
 
 
 function handleImageUpload() {

@@ -183,6 +183,7 @@
         Colors <i class="fa fa-caret-down"></i>
       </a>
       <div id="colorAcc" class="w3-hide w3-padding-large w3-medium" style="display: inline-block">
+        <div>
         <a href="#" onclick="decideColor('black')" class="button" style="
               background-color: black;
               border-radius: 50%;
@@ -231,6 +232,8 @@
               border-color: black !important ;
               border: solid;
             "></a>
+            </div>
+            <div>
         <a href="#" onclick="decideColor('purple')" class="button" style="
               background-color: rgb(132, 65, 128);
               border-radius: 50%;
@@ -279,7 +282,7 @@
         border-color: black !important ;
         border: solid;
       "></a>
-
+</div>
       </div>
 
       <a onclick="myAccFunc('StickersAcc')" href="javascript:void(0)" class="button w3-block w3-white w3-left-align"
@@ -297,11 +300,11 @@
         <div id="stikcer-container"
           style="overflow-x: hidden;overflow-y: auto; max-height: 250px ;width: fit-content !important;display: flex;flex-wrap: wrap;">
 
-          <img id="drag1" class="pic whales dolphins" src="stickers/whale1.png" style="width: 80px"
+          <img id="drag1" class="pic animals whales dolphins" src="stickers/whale1.png" style="width: 80px"
             ondragstart="drag(event)" />
-          <img id="drag2" class="pic whales dolphins" src="stickers/whale3.png" style="width: 80px;"
+          <img id="drag2" class="pic animals  whales dolphins" src="stickers/whale3.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag3" class="pic milk peach box" src="stickers/peach milk.png" style="width: 80px;"
+          <img id="drag3" class="pic juice drink milk peach box" src="stickers/peach milk.png" style="width: 80px;"
             ondragstart="drag(event)">
           <img id="drag4" class="pic naruto itachi animes" src="stickers/itachi.png" style="width: 80px;"
             ondragstart="drag(event)">
@@ -313,12 +316,12 @@
             ondragstart="drag(event)">
           <img id="drag8" class="pic naruto animes" src="stickers/naruto.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag9" class="pic whales" src="stickers/whale4.png" style="width: 80px;" ondragstart="drag(event)">
-          <img id="drag10" class="pic whales" src="stickers/whale5.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag9" class="pic animals whales" src="stickers/whale4.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag10" class="pic animals whales" src="stickers/whale5.png" style="width: 80px;" ondragstart="drag(event)">
           <img id="drag11" class="pic naruto animes" src="stickers/naruto2.png" style="width: 80px;"
             ondragstart="drag(event)">
-          <img id="drag11" class="pic books" src="stickers/book.png" style="width: 80px;" ondragstart="drag(event)">
-          <img id="drag12" class="pic whales" src="stickers/whale2.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag18" class="pic books" src="stickers/book.png" style="width: 80px;" ondragstart="drag(event)">
+          <img id="drag12" class="pic animals whales" src="stickers/whale2.png" style="width: 80px;" ondragstart="drag(event)">
           <img id="drag13" class=" pic naruto animes" src="stickers/naruto3.png" style="width: 80px;"
             ondragstart="drag(event)">
           <img id="drag14" class="pic captions quotes words sentences " src="stickers/caption 1.png"
@@ -339,8 +342,6 @@
 
       </div>
 
-      <a href="#footer" class="w3-bar-item button w3-padding">Contact</a>
-      <a href="#footer" class="w3-bar-item button w3-padding">Subscribe</a>
 
       <a id="sideregisterbtn" href="#" class="w3-bar-item button w3-padding"
         onclick="document.getElementById('Register').style.display='block'">Register</a>
@@ -355,15 +356,8 @@
       document.getElementById('sidelogoutbtn').style.display='none'; 
       document.getElementById('welcomeText').style.display='none'">Logout</a>
 
-
       <a style="display: none;" id="SidebtndeleteUser" href="javascript:void(0)" class="w3-bar-item button w3-padding"
         onclick="document.getElementById('deleteUser').style.display='inline-block'"> Delete User</a>
-
-      <a href="#" class="w3-bar-item button w3-padding"
-        onclick="document.getElementById('newsletter').style.display='block'">Newsletter</a>
-      <!-- 
-      <a href="#" class="w3-bar-item button w3-padding"
-        onclick="document.getElementById('success').style.display='block'"></a> -->
 
   </nav>
 
@@ -390,8 +384,6 @@
     <header class="container w3-xlarge">
       <p class="w3-left">Design</p>
       <p class="w3-right">
-        <i class="fa fa-shopping-cart w3-margin-right"></i>
-        <i class="fa fa-search"></i>
       </p>
     </header>
     <!-- design section -->
@@ -431,118 +423,15 @@
           /* border: 2px solid !important; */
         ">
         
-
-
-
       </div>
     </div>
     <button class="button w3-black w3-margin-bottom w3-margin-top" onclick="removeContent()">Remove all
       stickers</button>
     <button class="button w3-black w3-margin-bottom w3-margin-top" onclick="downloadImage()"> Save </button>
-    <!-- Subscribe section -->
-    <div class="container w3-black w3-padding-32">
-      <h1>Subscribe</h1>
-      <p>To get special offers and VIP treatment:</p>
-      <p>
-        <input class="input w3-border" type="text" placeholder="Enter e-mail" style="width: 100%" />
-      </p>
-      <button type="button" class="button w3-red w3-margin-bottom">
-        Subscribe
-      </button>
-    </div>
-
-    <!-- Footer -->
-    <footer class="w3-padding-64 w3-light-grey w3-small w3-center" id="footer">
-      <div class="w3-row-padding">
-        <div class="w3-col s4">
-          <h4>Contact</h4>
-          <p>Questions? Go ahead.</p>
-          <form action="/action_page.php" target="_blank">
-            <p>
-              <input class="input w3-border" type="text" placeholder="Name" name="Name" required />
-            </p>
-            <p>
-              <input class="input w3-border" type="text" placeholder="Email" name="Email" required />
-            </p>
-            <p>
-              <input class="input w3-border" type="text" placeholder="Subject" name="Subject" required />
-            </p>
-            <p>
-              <input class="input w3-border" type="text" placeholder="Message" name="Message" required />
-            </p>
-            <button type="submit" class="button w3-block w3-black">
-              Send
-            </button>
-          </form>
-        </div>
-
-        <div class="w3-col s4">
-          <h4>About</h4>
-          <p><a href="#">About us</a></p>
-          <p><a href="#">We're hiring</a></p>
-          <p><a href="#">Support</a></p>
-          <p><a href="#">Find store</a></p>
-          <p><a href="#">Shipment</a></p>
-          <p><a href="#">Payment</a></p>
-          <p><a href="#">Gift card</a></p>
-          <p><a href="#">Return</a></p>
-          <p><a href="#">Help</a></p>
-        </div>
-
-        <div class="w3-col s4 w3-justify">
-          <h4>Store</h4>
-          <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
-          <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
-          <p><i class="fa fa-fw fa-envelope"></i> ex@mail.com</p>
-          <h4>We accept</h4>
-          <p><i class="fa fa-fw fa-cc-amex"></i> Amex</p>
-          <p><i class="fa fa-fw fa-credit-card"></i> Credit Card</p>
-          <br />
-          <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
-          <i class="fa fa-instagram w3-hover-opacity w3-large"></i>
-          <i class="fa fa-snapchat w3-hover-opacity w3-large"></i>
-          <i class="fa fa-pinterest-p w3-hover-opacity w3-large"></i>
-          <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
-          <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
-        </div>
-      </div>
-    </footer>
-
-    <div class="w3-black w3-center w3-padding-24">
-      Powered by
-      <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank"
-        class="w3-hover-opacity">w3.css</a>
-    </div>
-
-
+    
     <!-- End page content -->
 
-
-
   </div>
-  <!-- 
-  Newsletter Modal -->
-  <div id="newsletter" class="w3-modal">
-    <div class="w3-modal-content w3-animate-zoom" style="padding: 32px">
-      <div class="container w3-center">
-        <i onclick="document.getElementById('newsletter').style.display='none'"
-          class="fa fa-remove w3-right button w3-transparent w3-xxlarge"></i>
-        <h2 class="wide">NEWSLETTER</h2>
-        <p>
-          Join our mailing list to receive updates on new arrivals and special
-          offers.
-        </p>
-        <p>
-          <input class="input w3-border" type="text" placeholder="Enter e-mail" />
-        </p>
-        <button type="button" class="button w3-padding-large w3-red w3-margin-bottom"
-          onclick="document.getElementById('newsletter').style.display='none'">
-          Subscribe
-        </button>
-      </div>
-    </div>
-  </div>
-
 
 
   <!--  login modal-->
