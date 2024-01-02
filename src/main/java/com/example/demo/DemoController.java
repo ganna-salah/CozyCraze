@@ -37,7 +37,7 @@ public class DemoController {
     }
 
     @PostMapping("/homeRegisterForm")
-    public String homeRegister(@Valid @ModelAttribute HREGFormObject formObject,BindingResult result ,Model model,Model model3,Model model4,Model model5,Model model6,Model model8,Model model2){
+    public String homeRegister(@Valid @ModelAttribute HREGFormObject formObject,BindingResult result ,Model model,Model model3,Model model4,Model model5,Model model6,Model model8,Model model2,Model model9,Model model10){
         if (result.hasErrors()) {
         model3.addAttribute("homeloginFormObject", new HloginFormObject());
         model4.addAttribute("homeRegisterFormObject", new HREGFormObject());
@@ -54,6 +54,8 @@ public class DemoController {
         model6.addAttribute("RegisterFormObject", new REGFormObject());
         DemoServicesIMPL trial=new DemoServicesIMPL();
         trial.registerUser(formObject.getHomeregNameForm(),formObject.getHomeregEmailForm(),formObject.getHomeregPhoneForm(),formObject.getHomeregUsernameForm(),formObject.getHomeregPasswordForm());        
+        model9.addAttribute("myText", " Welcome !");
+        model10.addAttribute("scripttrial2", "null");    
         return "main";
     }
 
@@ -97,7 +99,6 @@ public class DemoController {
             return "main";
         }
         else if(result==2){
-            System.out.println("result 2 entered");
             model2.addAttribute("myText", " Welcome !");
             model6.addAttribute("scripttrial4", "null");
             return "main";
@@ -263,8 +264,6 @@ public class DemoController {
             this.homeregNameForm = homeregNameForm;
         }
         public void setHomeregPasswordForm(String homeregPasswordForm) {
-        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        //this.homeregPasswordForm = encoder.encode(homeregPasswordForm);
            this.homeregPasswordForm = homeregPasswordForm;
         }
         public void setHomeregPhoneForm(String homeregPhoneForm) {
