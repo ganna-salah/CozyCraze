@@ -81,7 +81,7 @@ public static DemoUser currentUser;
 
     @Override
     public boolean validateAdmin(String id) {
-        if(id.equals("3")){
+        if(id.equals("1")){
             return true;
         }
         return false;
